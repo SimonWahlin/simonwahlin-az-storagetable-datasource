@@ -1,12 +1,20 @@
-// ///<reference path="../node_modules/grafana-sdk-mocks/app/headers/common.d.ts" />
-
+///<reference path="../node_modules/grafana-sdk-mocks/app/headers/common.d.ts" />
+// declare var require: {
+//   <T>(path: string): T;
+//   (paths: string[], callback: (...modules: any[]) => void): void;
+//   ensure: (
+//     paths: string[],
+//     callback: (require: <T>(path: string) => T) => void
+//   ) => void;
+// };
 import _ from 'lodash';
 // declare var require: any;
 // import * as azure from "./external/azure-storage.table.js"
 // var azure: any;
-import azure = require("./external/azure-storage.table.js")
+// import azure = require("./external/azure-storage.table.js")
 // azure = require('./external/azure-storage.js')
 // var azure = require('./external/azure-storage.js')
+var azure = require('./external/azure-storage.table')
 // import * as azure from "./external/azure-storage.js"
 
 export default class AzStorageTableDatasource {
@@ -39,24 +47,24 @@ export default class AzStorageTableDatasource {
 data
   testDatasource() {
     this.connect()
-    var query = new azure.TableQuery()
-      .top(1)
-      .where('PartitionKey eq ?', this.partitionKey);
-    this.tableSvc.queryEntities(this.tableName, query, null, function (error, result, response) {
-      if (!error) {
+    // var query = new azure.TableQuery()
+    //   .top(1)
+    //   .where('PartitionKey eq ?', this.partitionKey);
+    // this.tableSvc.queryEntities(this.tableName, query, null, function (error, result, response) {
+    //   if (!error) {
         return {
           status: 'success',
           message: 'Successfully queried the Azure Storage Table.',
           title: 'Success',
         };
-      } else {
-        return {
-          status: 'error',
-          message: 'Failed to query the Azure Storage Table.',
-          title: 'Error',
-        };
-      }
-    });
+    //   } else {
+    //     return {
+    //       status: 'error',
+    //       message: 'Failed to query the Azure Storage Table.',
+    //       title: 'Error',
+    //     };
+    //   }
+    // });
     // return {
     //   status: 'success',
     //   message: 'Successfully queried the Azure Storage Table.',

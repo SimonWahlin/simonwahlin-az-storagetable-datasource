@@ -2,21 +2,21 @@
 // Copyright (c) Microsoft and contributors. All rights reserved.
 /* eslint-disable */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.AzureStorage || (g.AzureStorage = {})).Table = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 module.exports.generateDevelopmentStorageCredentials = function (proxyUri) {
   var devStore = 'UseDevelopmentStorage=true;';
@@ -49,7 +49,7 @@ module.exports.generateAccountSharedAccessSignature = function(storageAccountOrC
 {
   var storageSettings = StorageServiceClient.getStorageSettings(storageAccountOrConnectionString, storageAccessKey);
   var sharedKey = new SharedKey(storageSettings._name, storageSettings._key);
-  
+
   return sharedKey.generateAccountSignedQueryString(sharedAccessAccountPolicy);
 };
 
@@ -69,21 +69,21 @@ module.exports.LinearRetryPolicyFilter = azureCommon.LinearRetryPolicyFilter;
 module.exports.ExponentialRetryPolicyFilter = azureCommon.ExponentialRetryPolicyFilter;
 module.exports.RetryPolicyFilter = azureCommon.RetryPolicyFilter;
 },{"../lib/common/common.browser":2,"../lib/services/table/tablebatch":48,"../lib/services/table/tablequery":49,"../lib/services/table/tableservice":50,"../lib/services/table/tableutilities":51}],2:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var azureCommon = require('./common.core');
 
@@ -91,21 +91,21 @@ azureCommon.BrowserFileReadStream = require('./streams/browserfilereadstream');
 
 module.exports = azureCommon;
 },{"./common.core":3,"./streams/browserfilereadstream":24}],3:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var exports = module.exports;
 
@@ -160,27 +160,27 @@ exports.validate = require('./util/validate');
 exports.StorageUtilities = require('./util/storageutilities');
 exports.AccessCondition = require('./util/accesscondition');
 },{"./diagnostics/logger":4,"./filters/exponentialretrypolicyfilter":6,"./filters/linearretrypolicyfilter":7,"./filters/retrypolicyfilter":8,"./http/webresource":9,"./models/aclresult":11,"./models/servicepropertiesresult":12,"./models/servicestatsparser":13,"./models/tokencredential":14,"./services/storageserviceclient":17,"./signing/sharedaccesssignature":20,"./signing/sharedkey":21,"./streams/batchoperation":23,"./streams/bufferstream":25,"./streams/chunkallocator":26,"./streams/chunkstream":27,"./streams/chunkstreamwithstream":28,"./streams/speedsummary":29,"./util/accesscondition":30,"./util/constants":31,"./util/date":32,"./util/iso8061date":33,"./util/patch-xmlbuilder":34,"./util/sr":35,"./util/storageutilities":36,"./util/util":37,"./util/validate":38,"xml2js":311,"xmlbuilder":333}],4:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 /**
 * Creates a new Logger object
 * @class
 * The Logger class is used to write log information.
-* 
+*
 * @constructor
 *
 * @param {string} [level]           The log level. Refer to Logger.LogLevels.
@@ -188,13 +188,13 @@ exports.AccessCondition = require('./util/accesscondition');
 */
 function Logger(level, loggerFunction) {
   /**
-   * The log level. Refer to the Logger.LogLevels for available log levels. 
+   * The log level. Refer to the Logger.LogLevels for available log levels.
    * @name  Logger#level
    * @type  {string}
    * @see Logger.LogLevels
    */
   this.level = level;
-  
+
   this.loggerFunction = loggerFunction;
 
   if (!this.loggerFunction) {
@@ -310,21 +310,21 @@ Logger.prototype.defaultLoggerFunction = function(logLevel , msg) {
 module.exports = Logger;
 
 },{}],5:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var util = require('util');
@@ -337,7 +337,7 @@ function captureStackTrace(targetObject, constructorOpt) {
 }
 
 function ArgumentError(argumentName, message) {
-  captureStackTrace(this, this.constructor); 
+  captureStackTrace(this, this.constructor);
   this.name = this.constructor.name;
   this.argumentName = argumentName;
   this.message = message || util.format('Invalid or missing argument supplied: %s', argumentName);
@@ -345,7 +345,7 @@ function ArgumentError(argumentName, message) {
 util.inherits(ArgumentError, Error);
 
 function ArgumentNullError(argumentName, message) {
-  captureStackTrace(this, this.constructor); 
+  captureStackTrace(this, this.constructor);
   this.name = this.constructor.name;
   this.argumentName = argumentName;
   this.message = message || util.format('Missing argument: %s', argumentName);
@@ -354,10 +354,10 @@ function ArgumentNullError(argumentName, message) {
 util.inherits(ArgumentNullError, Error);
 
 function StorageError(message, properties) {
-  captureStackTrace(this, this.constructor); 
+  captureStackTrace(this, this.constructor);
   this.name = this.constructor.name;
   this.message = message;
-  
+
   if(properties){
     _.extend(this, properties);
   }
@@ -366,7 +366,7 @@ function StorageError(message, properties) {
 util.inherits(StorageError, Error);
 
 function TimeoutError(message) {
-  captureStackTrace(this, this.constructor); 
+  captureStackTrace(this, this.constructor);
   this.name = this.constructor.name;
   this.message = message;
 }
@@ -379,21 +379,21 @@ module.exports.StorageError = StorageError;
 module.exports.TimeoutError = TimeoutError;
 module.exports.captureStackTrace = captureStackTrace;
 },{"underscore":228,"util":233}],6:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 'use strict';
 
@@ -410,7 +410,7 @@ var RetryPolicyFilter = require('./retrypolicyfilter');
 * @param {number} [retryInterval=30000]     The client retry interval, in milliseconds.
 * @param {number} [minRetryInterval=3000]   The minimum retry interval, in milliseconds.
 * @param {number} [maxRetryInterval=90000]  The maximum retry interval, in milliseconds.
-* 
+*
 * @example
 * var azure = require('azure-storage');
 * var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -457,7 +457,7 @@ ExponentialRetryPolicyFilter.prototype.shouldRetry = function (statusCode, reque
   var incrementDelta = Math.pow(2, retryData.retryCount) - 1;
   var boundedRandDelta = this.retryInterval * 0.8 + Math.floor(Math.random() * (this.retryInterval * 1.2 - this.retryInterval * 0.8));
   incrementDelta *= boundedRandDelta;
-      
+
   retryData.retryInterval = Math.min(this.minRetryInterval + incrementDelta, this.maxRetryInterval);
 
   return RetryPolicyFilter._shouldRetryOnError(statusCode, requestOptions);
@@ -476,23 +476,23 @@ ExponentialRetryPolicyFilter.prototype.handle = function (requestOptions, next) 
 module.exports = ExponentialRetryPolicyFilter;
 
 },{"./retrypolicyfilter":8}],7:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
 'use strict';
- 
+
 var RetryPolicyFilter = require('./retrypolicyfilter');
 
 /**
@@ -553,21 +553,21 @@ LinearRetryPolicyFilter.prototype.handle = function (requestOptions, next) {
 module.exports = LinearRetryPolicyFilter;
 
 },{"./retrypolicyfilter":8}],8:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var azureutil = require('../util/util');
 var Constants = require('../util/constants');
@@ -578,7 +578,7 @@ var extend = require('util')._extend;
 * Creates a new RetryPolicyFilter instance.
 * @class
 * The RetryPolicyFilter allows you to retry operations,
-* using a custom retry policy. Users are responsible to 
+* using a custom retry policy. Users are responsible to
 * define the shouldRetry method.
 * To apply a filter to service operations, use `withFilter`
 * and specify the filter to be used when creating a service.
@@ -632,7 +632,7 @@ RetryPolicyFilter._handle = function (self, requestOptions, next) {
   var retryRequestOptions = extend({}, requestOptions);
   retryRequestOptions.retryInterval = 0;
 
-  // Initialize retryContext because that will be passed to the shouldRetry method which users will implement 
+  // Initialize retryContext because that will be passed to the shouldRetry method which users will implement
   retryRequestOptions.retryContext = {
     retryCount: 0,
     error: null,
@@ -661,7 +661,7 @@ RetryPolicyFilter._handle = function (self, requestOptions, next) {
         // that the resource replication is not finished yet. So, in case of 404 only in the secondary
         // location, the failure should still be retryable.
         var secondaryNotFound = (retryRequestOptions.currentLocation === Constants.StorageLocation.SECONDARY) && ((returnObject.response && returnObject.response.statusCode === 404) || (returnObject.error && returnObject.error.code === 'ENOTFOUND'));
- 
+
         var notExceedMaxRetryCount = retryRequestOptions.retryContext.retryCount ? retryRequestOptions.retryContext.retryCount <= self.retryCount : true;
         var retryInfo = self.shouldRetry(secondaryNotFound ? 500 : (azureutil.objectIsNull(returnObject.response) ? 306 : returnObject.response.statusCode), retryRequestOptions);
         retryRequestOptions.retryContext.retryCount++;
@@ -679,20 +679,20 @@ RetryPolicyFilter._handle = function (self, requestOptions, next) {
         if(azureutil.objectIsNull(retryInfo.retryInterval)) {
           retryInfo.retryInterval = self.retryInterval;
         }
-        
-        // Only in the case of success from server but client side failure like MD5 or length mismatch, returnObject.retryable has a value(we explicitly set it to false). 
+
+        // Only in the case of success from server but client side failure like MD5 or length mismatch, returnObject.retryable has a value(we explicitly set it to false).
         // In this case, we should not retry the request.
-        // If the output stream already get sent to server and get error back, 
+        // If the output stream already get sent to server and get error back,
         // we should NOT retry within the SDK as the stream data is not valid anymore if we retry directly.
         if (
             !returnObject.outputStreamSent && returnObject.error && azureutil.objectIsNull(returnObject.retryable) && notExceedMaxRetryCount &&
             (
-              (!azureutil.objectIsNull(returnObject.response) && retryInfo.retryable) || 
+              (!azureutil.objectIsNull(returnObject.response) && retryInfo.retryable) ||
               (
                 returnObject.error.code === 'ECONNREFUSED' ||
                 returnObject.error.code === 'ETIMEDOUT' ||
-                returnObject.error.code === 'ESOCKETTIMEDOUT' || 
-                returnObject.error.code === 'ECONNRESET' || 
+                returnObject.error.code === 'ESOCKETTIMEDOUT' ||
+                returnObject.error.code === 'ECONNRESET' ||
                 returnObject.error.code === 'EAI_AGAIN' ||
                 returnObject.error.message === 'XHR error' // stream-http XHR network error message in browsers
               )
@@ -761,7 +761,7 @@ RetryPolicyFilter._shouldRetryOnError = function (statusCode, requestOptions) {
       retryInfo.retryable = false;
       return retryInfo;
     }
-    
+
     // When absorbConditionalErrorsOnRetry is set (for append blob)
     if (requestOptions && requestOptions.absorbConditionalErrorsOnRetry) {
       if (statusCode == 412) {
@@ -789,21 +789,21 @@ RetryPolicyFilter._shouldRetryOnError = function (statusCode, requestOptions) {
 module.exports = RetryPolicyFilter;
 
 },{"../util/constants":31,"../util/storageutilities":36,"../util/util":37,"util":233}],9:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var azureutil = require('../util/util');
@@ -975,7 +975,7 @@ WebResource.prototype.withQueryOption = function (name, value, defaultValue) {
 /**
 * Adds optional query string parameters.
 *
-* Additional arguments will be the needles to search in the haystack. 
+* Additional arguments will be the needles to search in the haystack.
 *
 * @param {Object} object  The haystack of query string parameters.
 * @return {Object} The web resource.
@@ -1006,7 +1006,7 @@ WebResource.prototype.withHeader = function (name, value) {
 
   if (!azureutil.IsNullOrEmptyOrUndefinedOrWhiteSpace(value)) {
     value = value instanceof Date ? value.toUTCString() : value;
-    
+
     this.headers[name] = value;
   }
 
@@ -1027,7 +1027,7 @@ WebResource.prototype.withBody = function (body) {
 /**
 * Adds optional query string parameters.
 *
-* Additional arguments will be the needles to search in the haystack. 
+* Additional arguments will be the needles to search in the haystack.
 *
 * @param {Object} object  The haystack of headers.
 * @return {Object} The web resource.
@@ -1057,14 +1057,14 @@ WebResource.prototype.addOptionalMetadataHeaders = function (metadata) {
       if (azureutil.IsNullOrEmptyOrUndefinedOrWhiteSpace(value)) {
         throw new ArgumentError('metadata', SR.METADATA_VALUE_INVALID);
       }
-      
+
       var metadataHeaderName = HeaderConstants.PREFIX_FOR_STORAGE_METADATA + metadataKey;
       var existingMetadataHeaderName = '';
       var headers = self.headers ? self.headers : {};
       if (Object.keys(headers).some(function (headerName) {
         existingMetadataHeaderName = headerName;
         return headerName.toString().toLowerCase() === metadataHeaderName.toLowerCase();
-      })) {        
+      })) {
         self.withHeader(existingMetadataHeaderName, self.headers[existingMetadataHeaderName] + ',' + value);
       } else {
         self.withHeader(metadataHeaderName, value);
@@ -1114,22 +1114,22 @@ WebResource.prototype.pipeInput = function(inputStream, destStream) {
 
 module.exports = WebResource;
 },{"../errors/errors":5,"../util/constants":31,"../util/sr":35,"../util/util":37}],10:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
- 
+
 var MD5 = require('md5.js');
 
 var Md5Wrapper = function () {
@@ -1141,21 +1141,21 @@ Md5Wrapper.prototype.createMd5Hash = function() {
 
 module.exports = Md5Wrapper;
 },{"md5.js":159}],11:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var _ = require('underscore');
@@ -1263,21 +1263,21 @@ exports.parse = function (signedIdentifiersXml) {
   return signedIdentifiers;
 };
 },{"../util/constants":31,"../util/iso8061date":33,"../util/util":37,"underscore":228,"xmlbuilder":333}],12:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var _ = require('underscore');
@@ -1750,27 +1750,27 @@ exports.parse = function (servicePropertiesXml) {
   return serviceProperties;
 };
 },{"../util/constants":31,"underscore":228,"xmlbuilder":333}],13:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 exports = module.exports;
 
 exports.parse = function (serviceStatsXml) {
   var serviceStats = {};
 
-  if (typeof serviceStatsXml.GeoReplication !== 'undefined') {   
+  if (typeof serviceStatsXml.GeoReplication !== 'undefined') {
     serviceStats.GeoReplication = {};
 
     if (typeof serviceStatsXml.GeoReplication.Status !== 'undefined') {
@@ -1785,27 +1785,27 @@ exports.parse = function (serviceStatsXml) {
   return serviceStats;
 };
 },{}],14:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 /**
 * Creates a new TokenCredential object.
 * @class
 * The TokenCredential class is used to store the access token string.
-* 
+*
 * @constructor
 * @param {string} token The access token, such as an OAuth access token in string type.
 *
@@ -1840,18 +1840,18 @@ TokenCredential.prototype.set = function (token) {
 module.exports = TokenCredential;
 },{}],15:[function(require,module,exports){
 (function (Buffer){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
@@ -2100,21 +2100,21 @@ req.defaults = function (defaultOptions) {
 module.exports = req;
 }).call(this,require("buffer").Buffer)
 },{"../common.browser":2,"buffer":99,"extend":137,"http":210,"https":152,"stream":209,"url":229,"util":233}],16:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var util = require('util');
 
@@ -2196,7 +2196,7 @@ exports.parseAndValidateKeys = function (connectionString, validKeys) {
     }
 
     var value = pairs[m].substring(equalDex + 1);
-    
+
     if(typeof parsedConnectionString[key] === 'undefined'){
       parsedConnectionString[key] = value;
     } else {
@@ -3737,21 +3737,21 @@ module.exports = StorageServiceClient;
 }).call(this,require('_process'),require("buffer").Buffer)
 },{"../../services/table/tableutilities":51,"../diagnostics/logger":4,"../errors/errors":5,"../http/webresource":9,"../md5-wrapper":10,"../models/servicepropertiesresult":12,"../request-wrapper":15,"../signing/sharedaccesssignature":20,"../signing/sharedkey":21,"../signing/tokensigner":22,"../streams/bufferstream.js":25,"../util/constants":31,"../util/sr":35,"../util/storageutilities":36,"../util/util":37,"../util/validate":38,"./servicesettings":16,"./storageservicesettings":18,"_process":175,"buffer":99,"events":135,"extend":137,"json-edm-parser":157,"os":163,"querystring":185,"underscore":228,"url":229,"util":233,"uuid":234,"xml2js":311}],18:[function(require,module,exports){
 (function (process){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 'use strict';
 
@@ -3905,12 +3905,12 @@ StorageServiceSettings.createFromEnvironment = function () {
   var emulated = process.env[StorageServiceClientConstants.EnvironmentVariables.EMULATED];
   if (emulated) {
     return StorageServiceSettings.getDevelopmentStorageAccountSettings();
-  } 
+  }
 
   var connectionString = process.env[StorageServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_CONNECTION_STRING];
   if (connectionString) {
     return StorageServiceSettings.createFromConnectionString(connectionString);
-  } 
+  }
 
   var storageAccount = process.env[StorageServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
   var storageAccessKey = process.env[StorageServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
@@ -3951,7 +3951,7 @@ StorageServiceSettings.createFromSettings = function (settings) {
       defaultEndpointsProtocolSetting,
       accountNameSetting,
       accountKeySetting
-    ), 
+    ),
     ServiceSettings.optional(
       blobEndpointSetting,
       queueEndpointSetting,
@@ -3961,7 +3961,7 @@ StorageServiceSettings.createFromSettings = function (settings) {
     )
   );
 
-  if (matchedSpecs) {  
+  if (matchedSpecs) {
     return this._createStorageServiceSettings(settings);
   }
 
@@ -3981,7 +3981,7 @@ StorageServiceSettings.createFromSettings = function (settings) {
     )
   );
 
-  if (matchedSpecs) {  
+  if (matchedSpecs) {
     return this._createStorageServiceSettings(settings);
   }
 
@@ -4180,7 +4180,7 @@ StorageServiceSettings._createStorageServiceSettings = function (settings) {
     queueEndpoint,
     tableEndpoint,
     fileEndpoint,
-    token 
+    token
   );
 };
 
@@ -4190,21 +4190,21 @@ exports = module.exports = StorageServiceSettings;
 }).call(this,require('_process'))
 },{"../models/tokencredential":14,"../util/constants":31,"../util/sr":35,"../util/util":37,"../util/validate":38,"./servicesettings":16,"_process":175,"underscore":228,"url":229}],19:[function(require,module,exports){
 (function (Buffer){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var crypto = require('crypto');
@@ -4235,21 +4235,21 @@ HmacSha256Sign.prototype.sign = function (stringToSign) {
 module.exports = HmacSha256Sign;
 }).call(this,require("buffer").Buffer)
 },{"buffer":99,"crypto":108}],20:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 var HmacSha256Sign = require('./hmacsha256sign');
 var Constants = require('./../util/constants');
 var SR = require('./../util/sr');
@@ -4293,21 +4293,21 @@ SharedAccessSignature.prototype.signRequest = function (webResource, callback) {
 module.exports = SharedAccessSignature;
 
 },{"./../util/constants":31,"./../util/sr":35,"./hmacsha256sign":19}],21:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var _ = require('underscore');
@@ -4349,13 +4349,13 @@ function SharedKey(storageAccount, storageAccessKey, usePathStyleUri) {
 *                                                                                       Refer to `Constants.AccountSasConstants.Services`.
 * @param {SharedAccessResourceTypes}  sharedAccessPolicy.AccessPolicy.ResourceTypes     The resource type for a shared access signature associated with this shared access policy.
 *                                                                                       Refer to `Constants.AccountSasConstants.Resources`.
-* @param {SharedAccessPermissions}    sharedAccessPolicy.AccessPolicy.Permissions       The permissions for a shared access signature. 
+* @param {SharedAccessPermissions}    sharedAccessPolicy.AccessPolicy.Permissions       The permissions for a shared access signature.
 *                                                                                       Refer to `Constants.AccountSasConstants.Permissions`.
 * @param {date}                       sharedAccessPolicy.AccessPolicy.Start             The time at which the Shared Access Signature becomes valid.
 * @param {date}                       sharedAccessPolicy.AccessPolicy.Expiry            The time at which the Shared Access Signature becomes expired.
 * @param {string}                     sharedAccessPolicy.AccessPolicy.IPAddressOrRange  An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive.
-* @param {string}                     sharedAccessPolicy.AccessPolicy.Protocols         The protocols permitted for a request made with the account SAS. 
-*                                                                                       Possible values are both HTTPS and HTTP (https,http) or HTTPS only (https). The default value is https,http. 
+* @param {string}                     sharedAccessPolicy.AccessPolicy.Protocols         The protocols permitted for a request made with the account SAS.
+*                                                                                       Possible values are both HTTPS and HTTP (https,http) or HTTPS only (https). The default value is https,http.
 *                                                                                       Refer to `Constants.AccountSasConstants.Protocols`.
 * @return {string} The shared access signature.
 */
@@ -4371,7 +4371,7 @@ SharedKey.prototype.generateAccountSignedQueryString = function (sharedAccessPol
       if (!_.isDate(accessPolicy.Start)) {
         accessPolicy.Start = new Date(accessPolicy.Start);
       }
- 
+
       accessPolicy.Start = azureutil.truncatedISO8061Date(accessPolicy.Start);
     }
 
@@ -4400,7 +4400,7 @@ SharedKey.prototype.generateAccountSignedQueryString = function (sharedAccessPol
     addIfNotNull(queryString, QueryStringConstants.SIGNED_IP, sharedAccessPolicy.AccessPolicy.IPAddressOrRange);
     addIfNotNull(queryString, QueryStringConstants.SIGNED_PROTOCOL, sharedAccessPolicy.AccessPolicy.Protocols);
   }
-  
+
   // add signature
   addIfNotNull(queryString, QueryStringConstants.SIGNATURE, this._generateAccountSharedAccessSignature(sharedAccessPolicy));
 
@@ -4417,13 +4417,13 @@ SharedKey.prototype.generateAccountSignedQueryString = function (sharedAccessPol
 *                                                                                       Refer to `Constants.AccountSasConstants.Services`.
 * @param {SharedAccessResourceTypes}  sharedAccessPolicy.AccessPolicy.ResourceTypes     The resource type for a shared access signature associated with this shared access policy.
 *                                                                                       Refer to `Constants.AccountSasConstants.ResourceTypes`.
-* @param {SharedAccessPermissions}    sharedAccessPolicy.AccessPolicy.Permissions       The permissions for a shared access signature. 
+* @param {SharedAccessPermissions}    sharedAccessPolicy.AccessPolicy.Permissions       The permissions for a shared access signature.
 *                                                                                       Refer to `Constants.AccountSasConstants.Permissions`.
 * @param {date}                       sharedAccessPolicy.AccessPolicy.Start             The time at which the Shared Access Signature becomes valid.
 * @param {date}                       sharedAccessPolicy.AccessPolicy.Expiry            The time at which the Shared Access Signature becomes expired.
 * @param {string}                     sharedAccessPolicy.AccessPolicy.IPAddressOrRange  An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive.
-* @param {string}                     sharedAccessPolicy.AccessPolicy.Protocols         The protocols permitted for a request made with the account SAS. 
-*                                                                                       Possible values are both HTTPS and HTTP (https,http) or HTTPS only (https). The default value is https,http. 
+* @param {string}                     sharedAccessPolicy.AccessPolicy.Protocols         The protocols permitted for a request made with the account SAS.
+*                                                                                       Possible values are both HTTPS and HTTP (https,http) or HTTPS only (https). The default value is https,http.
 *                                                                                       Refer to `Constants.AccountSasConstants.Protocols`.
 * @return {string} The signature part of the shared access signature.
 */
@@ -4439,8 +4439,8 @@ SharedKey.prototype._generateAccountSharedAccessSignature = function(sharedAcces
     }
 
     return returnValue;
-  };  
-  
+  };
+
   var stringToSign = getvalueToAppend(this.storageAccount) +
       getvalueToAppend(sharedAccessPolicy.AccessPolicy ? sharedAccessPolicy.AccessPolicy.Permissions : '') +
       getvalueToAppend(sharedAccessPolicy.AccessPolicy ? sharedAccessPolicy.AccessPolicy.Services : '') +
@@ -4450,8 +4450,8 @@ SharedKey.prototype._generateAccountSharedAccessSignature = function(sharedAcces
       getvalueToAppend(sharedAccessPolicy.AccessPolicy ? sharedAccessPolicy.AccessPolicy.IPAddressOrRange : '') +
       getvalueToAppend(sharedAccessPolicy.AccessPolicy ? sharedAccessPolicy.AccessPolicy.Protocols : '') +
       getvalueToAppend(HeaderConstants.TARGET_STORAGE_VERSION);
-      
-  return this.signer.sign(stringToSign);  
+
+  return this.signer.sign(stringToSign);
 };
 
 /**
@@ -4582,8 +4582,8 @@ SharedKey.prototype._getCanonicalizedHeaders = function (webResource) {
 * @param {date}                       [sharedAccessPolicy.AccessPolicy.Start]             The time at which the Shared Access Signature becomes valid.
 * @param {date}                       [sharedAccessPolicy.AccessPolicy.Expiry]            The time at which the Shared Access Signature becomes expired.
 * @param {string}                     [sharedAccessPolicy.AccessPolicy.IPAddressOrRange]  An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive.
-* @param {string}                     [sharedAccessPolicy.AccessPolicy.Protocols]         The protocols permitted for a request made with the account SAS. 
-*                                                                                         Possible values are both HTTPS and HTTP (https,http) or HTTPS only (https). The default value is https,http. 
+* @param {string}                     [sharedAccessPolicy.AccessPolicy.Protocols]         The protocols permitted for a request made with the account SAS.
+*                                                                                         Possible values are both HTTPS and HTTP (https,http) or HTTPS only (https). The default value is https,http.
 * @param {string}                     sasVersion                                          A string indicating the desired SAS Version to use, in storage service version format. Value must be 2012-02-12 or later.
 * @parma {ResourceTypes}              [args.resourceType]                                 The resource type, if the resource is a blob or container.  Null if the resource is a queue or table.
 * @parma {ResourceTypes}              [args.tableName]                                    The table name, if the resource is a table.  Null if the resource is a blob orqueue.
@@ -4624,7 +4624,7 @@ SharedKey.prototype.generateSignedQueryString = function (serviceType, path, sha
       if (!_.isDate(accessPolicy.Start)) {
         accessPolicy.Start = new Date(accessPolicy.Start);
       }
- 
+
       accessPolicy.Start = azureutil.truncatedISO8061Date(accessPolicy.Start);
     }
 
@@ -4642,7 +4642,7 @@ SharedKey.prototype.generateSignedQueryString = function (serviceType, path, sha
   var resourceType;
   var headers;
   var tableName;
-  
+
   if(args) {
     queryString = args.queryString;
     resourceType = args.resourceType;
@@ -4709,7 +4709,7 @@ SharedKey.prototype.generateSignedQueryString = function (serviceType, path, sha
 * @param {date}                       [sharedAccessPolicy.AccessPolicy.Start]             The time at which the Shared Access Signature becomes valid.
 * @param {date}                       [sharedAccessPolicy.AccessPolicy.Expiry]            The time at which the Shared Access Signature becomes expired.
 * @param {string}                     [sharedAccessPolicy.AccessPolicy.IPAddressOrRange]  An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive.
-* @param {string}                     [sharedAccessPolicy.AccessPolicy.Protocols]         The protocols permitted for a request made with the account SAS. 
+* @param {string}                     [sharedAccessPolicy.AccessPolicy.Protocols]         The protocols permitted for a request made with the account SAS.
 *                                                                                         Possible values are both HTTPS and HTTP (https,http) or HTTPS only (https). The default value is https,http.
 * @param {string}                     sasVersion                                          A string indicating the desired SAS Version to use, in storage service version format. Value must be 2012-02-12 or later.
 * @parma {ResourceTypes}              [args.resourceType]                                 The resource type, if the resource is a blob or container.  Null if the resource is a queue or table.
@@ -4782,7 +4782,7 @@ SharedKey.prototype._generateSignature = function (serviceType, path, sharedAcce
   }
 
   if(tableName) {
-    stringToSign += '\n' + 
+    stringToSign += '\n' +
     getvalueToAppend(sharedAccessPolicy.AccessPolicy ? sharedAccessPolicy.AccessPolicy.StartPk : '') +
     getvalueToAppend(sharedAccessPolicy.AccessPolicy ? sharedAccessPolicy.AccessPolicy.StartRk : '') +
     getvalueToAppend(sharedAccessPolicy.AccessPolicy ? sharedAccessPolicy.AccessPolicy.EndPk : '') +
@@ -4794,21 +4794,21 @@ SharedKey.prototype._generateSignature = function (serviceType, path, sharedAcce
 
 module.exports = SharedKey;
 },{"../errors/errors":5,"../util/constants":31,"../util/sr":35,"../util/util":37,"./hmacsha256sign":19,"querystring":185,"underscore":228}],22:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var Constants = require('../util/constants');
 var HeaderConstants = Constants.HeaderConstants;
@@ -4837,21 +4837,21 @@ TokenSigner.prototype.signRequest = function (webResource, callback) {
 module.exports = TokenSigner;
 },{"../util/constants":31}],23:[function(require,module,exports){
 (function (process){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var util = require('util');
 var http = require('http');
@@ -4969,7 +4969,7 @@ BatchOperation.prototype._getApproximateMemoryUsage = function() {
 /**
 * Return whether in a low memory situation.
 */
-BatchOperation.prototype._isLowMemory = function() {  
+BatchOperation.prototype._isLowMemory = function() {
   var approximateMemoryUsage = this._getApproximateMemoryUsage();
   return os.freemem() < CriticalFreeMemory ||
     (this._activeOperation >= this.concurrency && approximateMemoryUsage > 0.5 * SystemTotalMemory) ||
@@ -5102,7 +5102,7 @@ BatchOperation.prototype._fireOperationUserCallback = function (operation) {
       // both async and sync operations are available for random mode.
       operation._fireUserCallback();
     }
-    
+
     // remove the operation from the array and decrement the counter
     this._operations.splice(index, 1);
     this._activeOperation--;
@@ -5133,7 +5133,7 @@ BatchOperation.prototype._tryEmitEndEvent = function () {
     this._emitter.emit('end', this._error, null);
     return true;
   }
-  
+
   // Workaround to recover from the 'hang' edge case. _tryEmitEndEvent function is not supposed to be called if the bacth is not really completed.
   this._tryEmitDrainEvent();
   return false;
@@ -5250,7 +5250,7 @@ function CommonOperation(operationFunc, callback) {
     operationFunc.apply(null, operationArguments);
     operationArguments = operationFunc = null;
   };
-  
+
   this._fireUserCallback = function () {
     if (this._userCallback) {
       this._userCallback.apply(null, this._callbackArguments);
@@ -5265,21 +5265,21 @@ module.exports = BatchOperation;
 
 }).call(this,require('_process'))
 },{"../diagnostics/logger":4,"../errors/errors":5,"../util/constants":31,"../util/util":37,"_process":175,"events":135,"http":210,"https":152,"os":163,"util":233}],24:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var buffer = require('buffer').Buffer;
 var stream = require('stream');
@@ -5327,21 +5327,21 @@ BrowserFileReadStream.prototype._read = function() {
 
 module.exports = BrowserFileReadStream;
 },{"../util/constants":31,"buffer":99,"stream":209,"util":233}],25:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var stream = require('stream');
 var util = require('util');
@@ -5379,21 +5379,21 @@ BufferStream.prototype._readNextChunk = function () {
 module.exports = BufferStream;
 },{"stream":209,"util":233}],26:[function(require,module,exports){
 (function (Buffer){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 /**
 * Chunked memory pool allocator.
 * It could dramatically reduce the memory usage.
@@ -5437,7 +5437,7 @@ ChunkAllocator.prototype._getBufferFromPool = function(size) {
   // Return null if the given size does not match the chunk size of the buffer pool.
   if(size !== this._chunkSize) {
     return null;
-  } 
+  }
 
   // Extend the memory pool if it is empty.
   if(this._pool.length === 0) {
@@ -5489,7 +5489,7 @@ ChunkAllocator.prototype.releaseBuffer = function(buffer) {
     buffer = null;
   }
 
-  // Decrement _inuse 
+  // Decrement _inuse
   this._inuse--;
 
   // _inuse could be below zero if a buffer is released which was not returned by getBuffer
@@ -5511,21 +5511,21 @@ module.exports = ChunkAllocator;
 }).call(this,require("buffer").Buffer)
 },{"buffer":99}],27:[function(require,module,exports){
 (function (Buffer){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var stream = require('stream');
 var util = require('util');
@@ -5607,7 +5607,7 @@ ChunkStream.prototype.end = function (chunk, encoding, cb) {
 
   this._streamEnded = true;
   this._flushInternalBuffer();
-  
+
   if (cb) {
     this.once('end', cb);
   }
@@ -5633,7 +5633,7 @@ ChunkStream.prototype.destroy = function () {
   if (this._allocator && azureutil.objectIsFunction(this._allocator.destroy)) {
     this._allocator.destroy();
   }
-  
+
   this.emit('close');
 };
 
@@ -5709,7 +5709,7 @@ ChunkStream.prototype._emitBufferData = function(buffer) {
   };
 
   this._offset = newOffset;
-  
+
   if (this._outputLengthLimit > 0) {
     // When the start postion is larger than the limit, no data will be consumed though there is an event to be emitted.
     // So the buffer should not be calculated.
@@ -5834,21 +5834,21 @@ ChunkStream.prototype.resume = function() {
 module.exports = ChunkStream;
 }).call(this,require("buffer").Buffer)
 },{"../md5-wrapper":10,"../util/constants":31,"../util/util":37,"buffer":99,"stream":209,"util":233}],28:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var ChunkStream = require('./chunkstream');
 var EventEmitter = require('events').EventEmitter;
@@ -5892,7 +5892,7 @@ ChunkStreamWithStream.prototype.on = function(event, listener) {
       this._stream.resume();
     }
   }
-  
+
   return this;
 };
 
@@ -5940,21 +5940,21 @@ module.exports = ChunkStreamWithStream;
 
 },{"./../util/util":37,"./chunkstream":27,"events":135,"util":233}],29:[function(require,module,exports){
 (function (process){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var EventEmitter = require('events');
 var util = require('util');
@@ -6158,21 +6158,21 @@ module.exports = SpeedSummary;
 
 }).call(this,require('_process'))
 },{"../util/util":37,"_process":175,"events":135,"util":233}],30:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Expose 'AccessCondition'.
 
@@ -6221,7 +6221,7 @@ exports.generateIfExistsCondition = function () {
 };
 
 /**
-* Constructs an access condition such that an operation will be performed only if the resource's ETag value 
+* Constructs an access condition such that an operation will be performed only if the resource's ETag value
 * does not match the specified ETag value
 *
 * Setting this access condition modifies the request to include the HTTP If-None-Match conditional header
@@ -6326,21 +6326,21 @@ exports.generateSequenceNumberLessThanOrEqualCondition = function (sequenceNumbe
 };
 },{}],31:[function(require,module,exports){
 (function (process){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Expose 'Constants'.
 exports = module.exports;
@@ -6422,7 +6422,7 @@ var Constants = {
   * @type {string}
   */
   HTTPS: 'https:',
-  
+
   /**
   * Default HTTP port.
   *
@@ -6430,7 +6430,7 @@ var Constants = {
   * @type {int}
   */
   DEFAULT_HTTP_PORT: 80,
-  
+
   /**
   * Default HTTPS port.
   *
@@ -6443,7 +6443,7 @@ var Constants = {
    * Default client request timeout in milliseconds.
    * Integer containing the number of milliseconds to wait for a server to send response headers (and start the response body) before aborting the request.
    * 2 minutes by default.
-   * 
+   *
    * @const
    * @type {int}
    */
@@ -6464,10 +6464,10 @@ var Constants = {
   * @type {string}
   */
   XML_VALUE_MARKER: '_',
-  
+
   /**
   * Defines the service types indicators.
-  * 
+  *
   * @const
   * @enum {string}
   */
@@ -6521,7 +6521,7 @@ var Constants = {
       DELETE: 'd',
       LIST: 'l'
     },
-    
+
     /**
     * Services types.
     *
@@ -6534,7 +6534,7 @@ var Constants = {
       QUEUE: 'q',
       TABLE: 't'
     },
-    
+
     /**
     * Resources types.
     *
@@ -6868,7 +6868,7 @@ var Constants = {
     * @type {int}
     */
     DEFAULT_WRITE_PAGE_SIZE_IN_BYTES: 4 * 1024 * 1024,
-    
+
     /**
     * The minimum write page size, in bytes, used by blob streams.
     *
@@ -6956,7 +6956,7 @@ var Constants = {
     * @type {int}
     */
     MAX_UPDATE_PAGE_SIZE : 4 * 1024 * 1024,
-    
+
     /**
     * The maximum buffer size for writing a stream buffer.
     *
@@ -6964,7 +6964,7 @@ var Constants = {
     * @type {int}
     */
     MAX_QUEUED_WRITE_DISK_BUFFER_SIZE : 64 * 1024 * 1024,
-    
+
     /**
     * Max size for single get page range. The max value should be 150MB.
     * http://blogs.msdn.com/b/windowsazurestorage/archive/2012/03/26/getting-the-page-ranges-of-a-large-page-blob-in-segments.aspx
@@ -7230,7 +7230,7 @@ var Constants = {
     */
     ODATA_VALUE_MARKER: '_',
 
-    /** 
+    /**
     * Constant representing the type for an entity property.
     *
     * @const
@@ -8169,7 +8169,7 @@ var Constants = {
     * @type {string}
     */
     SHARE_QUOTA: 'x-ms-share-quota',
-    
+
     /**
     * The max blob size header.
     *
@@ -8235,8 +8235,8 @@ var Constants = {
     ACCESS_TIER_CHANGE_TIME: 'x-ms-access-tier-change-time',
 
     /**
-    * If the access tier is not explicitly set on the blob, 
-    * the tier is inferred based on its content length 
+    * If the access tier is not explicitly set on the blob,
+    * the tier is inferred based on its content length
     * and this header will be returned with true value.
     *
     * @const
@@ -8350,7 +8350,7 @@ var Constants = {
     * @type {string}
     */
     SIGNED_PERMISSIONS: 'sp',
-    
+
     /**
     * The signed services query string argument for shared access signature.
     *
@@ -8358,7 +8358,7 @@ var Constants = {
     * @type {string}
     */
     SIGNED_SERVICES: 'ss',
-    
+
     /**
     * The signed resource types query string argument for shared access signature.
     *
@@ -8366,7 +8366,7 @@ var Constants = {
     * @type {string}
     */
     SIGNED_RESOURCE_TYPES: 'srt',
-    
+
     /**
     * The signed IP query string argument for shared access signature.
     *
@@ -8374,7 +8374,7 @@ var Constants = {
     * @type {string}
     */
     SIGNED_IP: 'sip',
-    
+
     /**
     * The signed protocol query string argument for shared access signature.
     *
@@ -8789,17 +8789,17 @@ var Constants = {
   StorageErrorCodeStrings: {
     // Not Modified (304): The condition specified in the conditional header(s) was not met for a read operation.
     // Precondition Failed (412): The condition specified in the conditional header(s) was not met for a write operation.
-    CONDITION_NOT_MET: 'ConditionNotMet', 
+    CONDITION_NOT_MET: 'ConditionNotMet',
     // Bad Request (400): A required HTTP header was not specified.
-    MISSING_REQUIRED_HEADER: 'MissingRequiredHeader', 
+    MISSING_REQUIRED_HEADER: 'MissingRequiredHeader',
     // Bad Request (400): A required XML node was not specified in the request body.
-    MISSING_REQUIRED_XML_NODE: 'MissingRequiredXmlNode', 
+    MISSING_REQUIRED_XML_NODE: 'MissingRequiredXmlNode',
     // Bad Request (400): One of the HTTP headers specified in the request is not supported.
     UNSUPPORTED_HEADER: 'UnsupportedHeader',
     // Bad Request (400): One of the XML nodes specified in the request body is not supported.
-    UNSUPPORTED_XML_NODE: 'UnsupportedXmlNode', 
+    UNSUPPORTED_XML_NODE: 'UnsupportedXmlNode',
     // Bad Request (400): The value provided for one of the HTTP headers was not in the correct format.
-    INVALID_HEADER_VALUE: 'InvalidHeaderValue', 
+    INVALID_HEADER_VALUE: 'InvalidHeaderValue',
     // Bad Request (400): The value provided for one of the XML nodes in the request body was not in the correct format.
     INVALID_XML_NODE_VALUE: 'InvalidXmlNodeValue',
     // Bad Request (400): A required query parameter was not specified for this request.
@@ -8852,7 +8852,7 @@ var Constants = {
     ACCOUNT_IS_DISABLED: 'AccountIsDisabled',
     // Method Not Allowed (405): The resource doesn't support the specified HTTP verb.
     UNSUPPORTED_HTTP_VERB: 'UnsupportedHttpVerb',
-    // Conflict (409): The specified account already exists. 
+    // Conflict (409): The specified account already exists.
     ACCOUNT_ALREADY_EXISTS: 'AccountAlreadyExists',
     // Conflict (409): The specified account is in the process of being created.
     ACCOUNT_BEING_CREATED: 'AccountBeingCreated',
@@ -8870,7 +8870,7 @@ var Constants = {
     INTERNAL_ERROR: 'InternalError',
     // Internal Server Error (500): The operation could not be completed within the permitted time.
     OPERATION_TIMED_OUT: 'OperationTimedOut',
-    // Service Unavailable (503): The server is currently unable to receive requests. Please retry your request. 
+    // Service Unavailable (503): The server is currently unable to receive requests. Please retry your request.
     SERVER_BUSY: 'ServerBusy',
 
     // Legacy error code strings
@@ -8936,31 +8936,31 @@ module.exports = Constants;
 
 }).call(this,require('_process'))
 },{"_process":175}],32:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 /**
 * Date/time related helper functions
 * @module date
-* 
+*
 */
 
 /**
 * Generates a Date object which is in the given days from now.
-* 
+*
 * @param {int} days The days timespan.
 * @return {Date}
 */
@@ -9006,21 +9006,21 @@ exports.secondsFromNow = function (seconds) {
   return date;
 };
 },{}],33:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var rightPad = function (n, number) {
   var currentN = '' + n;
@@ -9073,21 +9073,21 @@ exports.parse = function (stringDateTime) {
   return date;
 };
 },{}],34:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 'use strict';
 
@@ -9106,21 +9106,21 @@ XMLStringifier.prototype.assertLegalChar = function(str) {
   return str;
 };
 },{"xmlbuilder/lib/XMLStringifier":330}],35:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 exports = module.exports;
 
@@ -9183,21 +9183,21 @@ var SR = {
 
 module.exports = SR;
 },{}],36:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Expose 'StorageUtilities'.
 
@@ -9227,21 +9227,21 @@ var StorageUtilities = {
 module.exports = StorageUtilities;
 },{}],37:[function(require,module,exports){
 (function (process,Buffer){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var _ = require('underscore');
 var util = require('util');
@@ -9573,11 +9573,11 @@ exports.setObjectInnerPropertyValue = function(object, propertyChainKeys, value)
     object[currentKey] = value;
     return;
   }
-  
+
   if (!object[currentKey]) {
     object[currentKey] = {};
   }
-  
+
   exports.setObjectInnerPropertyValue(object[currentKey], propertyChainKeys, value);
 };
 
@@ -9639,8 +9639,8 @@ exports.calculateMD5 = function(readStream, bufferLength, options, callback) {
     if (!readStream.endEmitted) {
       internalBuff = internalBuff.slice(0, index);
       var contentMD5 = internalHash.digest('base64');
-      // Set the flag to be compatible with Nodejs 0.10 which will keep emitting data from 
-      // the file stream when the read stream has emitted the end event from its listner. 
+      // Set the flag to be compatible with Nodejs 0.10 which will keep emitting data from
+      // the file stream when the read stream has emitted the end event from its listner.
       readStream.endEmitted = true;
       callback(internalBuff, contentMD5);
     }
@@ -9749,7 +9749,7 @@ exports.parseCopyProgress = function (progress) {
   if (typeof progress != 'string' || progress.indexOf('/') === -1) {
     return {};
   }
-  
+
   var progressInfo = progress.split('/');
   return { bytesCopied: progressInfo[0], totalBytes: progressInfo[1] };
 };
@@ -9781,14 +9781,14 @@ var normalizePropertyNameExceptionList = {
 };
 
 /**
-* Normalize the property name from XML to keep consistent with 
+* Normalize the property name from XML to keep consistent with
 * the name defined in the property headers
 */
 exports.normalizePropertyNameFromXML = function (propertyName) {
   if (this.IsNullOrEmptyOrUndefinedOrWhiteSpace(propertyName)) {
     return '';
   }
-  
+
   propertyName = propertyName.trim();
   propertyName = propertyName[0].toLowerCase() + propertyName.substring(1);
   // So far the cases are:
@@ -9817,7 +9817,7 @@ exports.setPropertyValueFromXML = function (result, xmlNode, toNormalize) {
       } else {
         result[subPropertyName.toLowerCase()] = xmlNode[subPropertyName];
       }
-      
+
       if (subPropertyName.toLowerCase() === 'copyprogress') {
         var info = this.parseCopyProgress(xmlNode[subPropertyName]);
         exports.setObjectInnerPropertyValue(result, ['copy', 'bytesCopied'], parseInt(info.bytesCopied));
@@ -9847,21 +9847,21 @@ exports.filterOutNonReservedProperties = function (reserved, options) {
 };
 }).call(this,require('_process'),require("buffer").Buffer)
 },{"../md5-wrapper":10,"./constants":31,"./sr":35,"./storageutilities":36,"_process":175,"buffer":99,"stream":209,"underscore":228,"url":229,"util":233}],38:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var _ = require('underscore');
 var util = require('util');
@@ -9905,7 +9905,7 @@ function initCallback(callbackParam, resultsCb) {
 */
 exports.isValidEnumValue = function (value, list, callback) {
   var fail;
-  
+
   initCallback(callback, function (f, cb) {
     fail = f;
     callback = cb;
@@ -9958,7 +9958,7 @@ exports.isValidHost= function (host) {
     if (!storageHost.primaryHost && !storageHost.secondaryHost) {
       throw new ArgumentNullError('host', SR.STORAGE_HOST_LOCATION_REQUIRED);
     }
-  } 
+  }
 
   return true;
 };
@@ -9982,7 +9982,7 @@ exports.isValidUuid = function(uuid, callback) {
   if (!validUuidRegex.test(uuid)) {
     return fail(new SyntaxError('The value is not a valid UUID format.'));
   }
-  
+
   callback();
   return true;
 };
@@ -10068,20 +10068,20 @@ exports.containerNameIsValid = function (containerName, callback) {
 */
 exports.blobNameIsValid = function (containerName, blobName, callback) {
   var fail;
-  
+
   initCallback(callback, function (f, cb) {
     fail = f;
     callback = cb;
   });
-  
+
   if (!blobName) {
     return fail(new ArgumentNullError('blobName', 'Blob name is not specified.'));
   }
-  
+
   if (containerName === '$root' && blobName.indexOf('/') !== -1) {
     return fail(new SyntaxError('Blob name format is incorrect.'));
   }
-  
+
   callback();
   return true;
 };
@@ -10093,12 +10093,12 @@ exports.blobNameIsValid = function (containerName, blobName, callback) {
 */
 exports.blobTierNameIsValid = function (blobTier, callback) {
   var fail;
-  
+
   initCallback(callback, function (f, cb) {
     fail = f;
     callback = cb;
   });
-  
+
   if (!blobTier) {
     return fail(new ArgumentNullError('blobTier', 'Blob tier is not specified.'));
   }
@@ -10253,7 +10253,7 @@ exports.pageRangesAreValid = function (rangeStart, rangeEnd, writeBlockSizeInByt
       return fail(new RangeError('Page blob size cannot be larger than ' + writeBlockSizeInBytes + ' bytes.'));
     }
   }
-  
+
   callback();
   return true;
 };
@@ -10273,7 +10273,7 @@ exports.blobTypeIsValid = function (type, callback) {
     }
     return values;
   };
-  
+
   return this.isValidEnumValue(type, getEnumValues(blobConstants.BlobTypes), callback);
 };
 
@@ -10284,12 +10284,12 @@ exports.blobTypeIsValid = function (type, callback) {
 */
 exports.shareACLIsValid = function (type, callback) {
   var fail;
-  
+
   initCallback(callback, function (f, cb) {
     fail = f;
     callback = cb;
   });
-  
+
   if (type != FileUtilities.SharePublicAccessType.OFF) {
     fail(new ArgumentError('type', 'The access type is not supported.'));
   }
@@ -10305,16 +10305,16 @@ exports.shareACLIsValid = function (type, callback) {
 */
 exports.shareQuotaIsValid = function (quota, callback) {
   var fail;
-  
+
   initCallback(callback, function (f, cb) {
     fail = f;
     callback = cb;
   });
-  
+
   if (quota && quota <= 0) {
     fail(new RangeError('The share quota value, in GB, must be greater than 0.'));
   }
-  
+
   callback();
   return true;
 };
@@ -10408,21 +10408,21 @@ function validateArgs(functionName, validationRules) {
 exports.ArgumentValidator = ArgumentValidator;
 exports.validateArgs = validateArgs;
 },{"../errors/errors":5,"./../../services/blob/blobutilities":39,"./../../services/file/fileutilities":40,"./../util/constants":31,"./sr":35,"./util":37,"underscore":228,"util":233,"validator":239}],39:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Expose 'BlobUtilities'.
 exports = module.exports;
@@ -10545,21 +10545,21 @@ var BlobUtilities = {
 
 module.exports = BlobUtilities;
 },{}],40:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Expose 'FileUtilities'.
 exports = module.exports;
@@ -10619,21 +10619,21 @@ var FileUtilities = {
 module.exports = FileUtilities;
 },{}],41:[function(require,module,exports){
 (function (Buffer){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var _ = require('underscore');
 var util = require('util');
@@ -10674,7 +10674,7 @@ exports.propertyType = function (value, guessNumberType) {
 
 /**
 * Convert a JSON value from over the wire into the correct EDM type.
-* 
+*
 * Note that Int64, is remaining a string.  Converting it to a Number would lose precision.
 * Int32, Boolean, and Double should already be the correct non-string types
 *
@@ -10762,7 +10762,7 @@ exports.serializeValue = function (type, value) {
 };
 
 /*
-* Determines if a type annotation is required for the input type when sending JSON data to the service. 
+* Determines if a type annotation is required for the input type when sending JSON data to the service.
 */
 exports.isTypeRequired = function(type, value) {
   switch (type) {
@@ -10814,26 +10814,26 @@ exports.serializeQueryValue = function (value, type) {
       return 'X\'' + value.toString('hex') + '\'';
     default:
       return '\'' + value.toString().replace(/'/g, '\'\'') + '\'';
-  }   
+  }
 };
 }).call(this,require("buffer").Buffer)
 },{"../tableutilities":51,"./../../../common/common.core":3,"buffer":99,"underscore":228,"util":233,"uuid":234}],42:[function(require,module,exports){
 (function (Buffer){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var util = require('util');
@@ -10887,7 +10887,7 @@ exports.serializeJson = function (entity) {
           result[propName + Constants.TableConstants.ODATA_TYPE_SUFFIX] = type;
         }
       }
-    } 
+    }
   }
 
   var replacer = function(key, value) {
@@ -10902,7 +10902,7 @@ exports.serializeJson = function (entity) {
     }
     return value;
   };
-  
+
   return JSON.stringify(result, replacer);
 };
 
@@ -10969,7 +10969,7 @@ exports.parseJsonEntities = function (response, autoResolveProperties, propertyR
       result.push(entity);
     }
 
-    return result;  
+    return result;
   }
 };
 
@@ -11000,7 +11000,7 @@ exports.parseJsonSingleEntity = function(rawEntity, autoResolveProperties, prope
     if (rawEntityProperties.hasOwnProperty(entityPropertyName)) {
       // set the type, if given in the response
       var entityPropertyType = entityPropertyTypes[entityPropertyName];
-      entity[entityPropertyName] = {};  
+      entity[entityPropertyName] = {};
 
       // use the given property resolver if present, otherwise infer type if undefined
       if (propertyResolver) {
@@ -11009,11 +11009,11 @@ exports.parseJsonSingleEntity = function(rawEntity, autoResolveProperties, prope
       }
       if (!entityPropertyType && autoResolveProperties) {
         entityPropertyType = edmHandler.propertyType(rawEntityProperties[entityPropertyName], false);
-      } 
+      }
 
       if (entityPropertyType) {
         entity[entityPropertyName][Constants.TableConstants.ODATA_TYPE_MARKER] = entityPropertyType;
-      } 
+      }
 
       try {
         entity[entityPropertyName][Constants.TableConstants.ODATA_VALUE_MARKER] = edmHandler.deserializeValueFromJson(entityPropertyType, rawEntityProperties[entityPropertyName]);
@@ -11040,21 +11040,21 @@ exports.parseJsonSingleEntity = function(rawEntity, autoResolveProperties, prope
 }).call(this,require("buffer").Buffer)
 },{"./../../../common/common.core":3,"./edmhandler":41,"buffer":99,"util":233}],43:[function(require,module,exports){
 (function (Buffer){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var util = require('util');
 var azureCommon = require('./../../../common/common.core');
@@ -11100,7 +11100,7 @@ function getEntityPath (tableName, partitionKey, rowKey) {
 * @param {boolean}            [options.checkEtag]                 Boolean value indicating weather the etag should be matched or not.
 * @param {string}             [options.echoContent]               Whether or not to return the entity upon a successful insert. Default to false.
 * @param {string}             [options.payloadFormat]             The payload format to use for the request.
-* @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to.
 *                                                                 Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]  The timeout of client requests, in milliseconds, to use for the request.
@@ -11177,21 +11177,21 @@ exports.setTableRequestHeadersAndBody = function (webResource, body, acceptType)
 };
 }).call(this,require("buffer").Buffer)
 },{"../models/entityresult":46,"./../../../common/common.core":3,"buffer":99,"util":233}],44:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var util = require('util');
@@ -11270,21 +11270,21 @@ SharedKeyTable.prototype._getCanonicalizedResource = function (webResource) {
 
 module.exports = SharedKeyTable;
 },{"./../../../common/common.core":3,"util":233}],45:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var azureCommon = require('./../../../common/common.core');
@@ -11351,7 +11351,7 @@ BatchResult.prototype.constructWebResource = function () {
 */
 BatchResult.prototype.serialize = function () {
   var body = '--' + this.batchBoundary + '\n';
-  
+
   if (this.operations.length === 1 && this.operations[0].type === TableConstants.Operations.RETRIEVE) {
     body += HeaderConstants.CONTENT_TYPE + ': application/http\n';
     body += HeaderConstants.CONTENT_TRANSFER_ENCODING + ': binary\n\n';
@@ -11366,7 +11366,7 @@ BatchResult.prototype.serialize = function () {
       body += this._serializeOperation(this.operations[i], i) + '\n';
     }
     body += '--' + this.changesetBoundary + '--\n';
-  } 
+  }
   body += '--' + this.batchBoundary + '--';
 
   return body;
@@ -11375,7 +11375,7 @@ BatchResult.prototype.serialize = function () {
 /**
 * Serializes a request within the batch.
 *
-* @param {object}       The operation to serialize.  
+* @param {object}       The operation to serialize.
 * @param {number}       The index of the operation in the operations arrray.
 * @return {string}      The serialized operation content.
 * @ignore
@@ -11498,7 +11498,7 @@ BatchResult.prototype._parseOperation = function (rawResponse) {
         var options = this.operations[index].options;
         propertyResolver = options.propertyResolver;
         entityResolver = options.entityResolver;
-      } 
+      }
       responseObject.entity = entityResult.parseEntity(responseObject.response, propertyResolver, entityResolver);
     }
   }
@@ -11508,21 +11508,21 @@ BatchResult.prototype._parseOperation = function (rawResponse) {
 
 module.exports = BatchResult;
 },{"../internal/requesthandler":43,"./../../../common/common.core":3,"./../../../common/md5-wrapper":10,"./entityresult":46}],46:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var azureCommon = require('./../../../common/common.core');
@@ -11567,25 +11567,25 @@ exports.getEtag = function (entity) {
   var etag;
   if (entity && entity[TableConstants.ODATA_METADATA_MARKER]) {
     etag = entity[TableConstants.ODATA_METADATA_MARKER].etag;
-  } 
+  }
   return etag;
 };
 },{"../internal/odatahandler":42,"./../../../common/common.core":3}],47:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var odataHandler = require('../internal/odatahandler');
@@ -11609,21 +11609,21 @@ TableResult.parse = function (response) {
 
 exports = module.exports = TableResult;
 },{"../internal/odatahandler":42}],48:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var extend = require('extend');
@@ -11695,9 +11695,9 @@ TableBatch.prototype.retrieveEntity = function (partitionKey, rowKey, options) {
 * @param {object}             [options]                                       The request options.
 * @param {string}             [options.echoContent]                           Whether or not to return the entity upon a successful insert. Inserts only, default to false.
 * @param {string}             [options.payloadFormat]                         The payload format to use for the request.
-* @param {TableService~propertyResolver}  [options.propertyResolver]  The property resolver. Only applied if echoContent is true. Given the partition key, row key, property name, 
+* @param {TableService~propertyResolver}  [options.propertyResolver]  The property resolver. Only applied if echoContent is true. Given the partition key, row key, property name,
 *                                                                             property value, and the property Edm type if given by the service, returns the Edm type of the property.
-* @param {Function(entity)} [options.entityResolver]                          The entity resolver. Only applied if echoContent is true. Given the single entity returned by the insert, returns 
+* @param {Function(entity)} [options.entityResolver]                          The entity resolver. Only applied if echoContent is true. Given the single entity returned by the insert, returns
 *                                                                             a modified object.
 */
 TableBatch.prototype.insertEntity = function (entity, options) {
@@ -11820,21 +11820,21 @@ TableBatch.prototype.removeOperation = function (index) {
 module.exports = TableBatch;
 
 },{"./../../common/common.core":3,"extend":137}],49:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var _ = require('underscore');
@@ -11891,7 +11891,7 @@ TableQuery.prototype.select = function () {
  *
  * // tasktable should already exist and have entities
  * tableService.queryEntities('tasktable', tableQuery, null \/*currentToken*\/, function(error, result) {
- *   if(!error) { 
+ *   if(!error) {
  *     var entities = result.entities; // there will be 10 or less entities
  *     // do stuff with the returned entities if there are any
  *     // if result.continuationToken exists, to get the next 10 (or less) entities
@@ -11922,13 +11922,13 @@ TableQuery.prototype.top = function (top) {
  *
  * // tasktable should already exist and have entities
  * tableService.queryEntities('tasktable', tableQuery, null \/*currentToken*\/, function(error, result, response) {
- *   if(!error) { 
+ *   if(!error) {
  *     var entities = result.entities;
  *     // do stuff with the returned entities if there are any
  *   }
  * });
  */
-TableQuery.prototype.where = function (condition) {  
+TableQuery.prototype.where = function (condition) {
   this._where.push(TableQuery._encodeConditionString(condition, arguments));
   return this;
 };
@@ -11937,7 +11937,7 @@ TableQuery.prototype.where = function (condition) {
  * Generates a property filter condition string for an 'int' value.
  *
  * @param {string}       propertyName   A string containing the name of the property to compare.
- * @param {string}       operation      A string containing the comparison operator to use. 
+ * @param {string}       operation      A string containing the comparison operator to use.
  *                                      See Constants.TableConstants.QueryComparisons for a list of allowed operations.
  * @param {string|int}   value          An 'int' containing the value to compare with the property.
  * @return {string} A string containing the formatted filter condition.
@@ -11952,7 +11952,7 @@ TableQuery.int32Filter = function (propertyName, operation, value) {
  * Generates a property filter condition string for a 'int64' value.
  *
  * @param {string}       propertyName   A string containing the name of the property to compare.
- * @param {string}       operation      A string containing the comparison operator to use. 
+ * @param {string}       operation      A string containing the comparison operator to use.
  *                                      See Constants.TableConstants.QueryComparisons for a list of allowed operations.
  * @param {string|int64} value          An 'int64' containing the value to compare with the property.
  * @return {string} A string containing the formatted filter condition.
@@ -11967,7 +11967,7 @@ TableQuery.int64Filter = function (propertyName, operation, value) {
  * Generates a property filter condition string for a 'double' value.
  *
  * @param {string}       propertyName   A string containing the name of the property to compare.
- * @param {string}       operation      A string containing the comparison operator to use. 
+ * @param {string}       operation      A string containing the comparison operator to use.
  *                                      See Constants.TableConstants.QueryComparisons for a list of allowed operations.
  * @param {string|double}value          A 'double' containing the value to compare with the property.
  * @return {string} A string containing the formatted filter condition.
@@ -11982,7 +11982,7 @@ TableQuery.doubleFilter = function (propertyName, operation, value) {
  * Generates a property filter condition string for a 'boolean' value.
  *
  * @param {string}       propertyName   A string containing the name of the property to compare.
- * @param {string}       operation      A string containing the comparison operator to use. 
+ * @param {string}       operation      A string containing the comparison operator to use.
  *                                      See Constants.TableConstants.QueryComparisons for a list of allowed operations.
  * @param {string|boolean}       value          A 'boolean' containing the value to compare with the property.
  * @return {string} A string containing the formatted filter condition.
@@ -11997,7 +11997,7 @@ TableQuery.booleanFilter = function (propertyName, operation, value) {
  * Generates a property filter condition string for a 'datetime' value.
  *
  * @param {string}       propertyName   A string containing the name of the property to compare.
- * @param {string}       operation      A string containing the comparison operator to use. 
+ * @param {string}       operation      A string containing the comparison operator to use.
  *                                      See Constants.TableConstants.QueryComparisons for a list of allowed operations.
  * @param {string|date}     value              A 'datetime' containing the value to compare with the property.
  * @return {string} A string containing the formatted filter condition.
@@ -12012,7 +12012,7 @@ TableQuery.dateFilter = function (propertyName, operation, value) {
  * Generates a property filter condition string for a 'guid' value.
  *
  * @param {string}       propertyName   A string containing the name of the property to compare.
- * @param {string}       operation      A string containing the comparison operator to use. 
+ * @param {string}       operation      A string containing the comparison operator to use.
  *                                      See Constants.TableConstants.QueryComparisons for a list of allowed operations.
  * @param {string|guid}  value          A 'guid' containing the value to compare with the property.
  * @return {string} A string containing the formatted filter condition.
@@ -12027,7 +12027,7 @@ TableQuery.guidFilter = function (propertyName, operation, value) {
  * Generates a property filter condition string for a 'binary' value.
  *
  * @param {string}       propertyName   A string containing the name of the property to compare.
- * @param {string}       operation      A string containing the comparison operator to use. 
+ * @param {string}       operation      A string containing the comparison operator to use.
  *                                      See Constants.TableConstants.QueryComparisons for a list of allowed operations.
  * @param {string|buffer}value          A 'buffer' containing the value to compare with the property.
  * @return {string} A string containing the formatted filter condition.
@@ -12042,7 +12042,7 @@ TableQuery.binaryFilter = function (propertyName, operation, value) {
  * Generates a property filter condition string.
  *
  * @param {string}       propertyName   A string containing the name of the property to compare.
- * @param {string}       operation      A string containing the comparison operator to use. 
+ * @param {string}       operation      A string containing the comparison operator to use.
  *                                      See Constants.TableConstants.QueryComparisons for a list of allowed operations.
  * @param {string}       value          A 'string' containing the value to compare with the property.
  * @return {string} A string containing the formatted filter condition.
@@ -12137,7 +12137,7 @@ TableQuery.prototype.toQueryObject = function () {
 * Concat the filter string parameters.
 *
 * @param {string}       propertyName   A string containing the name of the property to compare.
-* @param {string}       operation      A string containing the comparison operator to use. 
+* @param {string}       operation      A string containing the comparison operator to use.
 *                                      See Constants.TableConstants.QueryComparisons for a list of allowed operations.
 * @param {object}       value          The value to compare with the property.
 * @param {string}       type           A string EdmType of the property to compare.
@@ -12242,21 +12242,21 @@ module.exports = TableQuery;
 
 },{"./../../common/common.core":3,"./internal/edmhandler":41,"./tableutilities":51,"underscore":228,"util":233}],50:[function(require,module,exports){
 (function (Buffer){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var util = require('util');
@@ -12303,7 +12303,7 @@ var TableUtilities = require('./tableutilities');
 * defaultMaximumExecutionTimeInMs                     The default maximum execution time across all potential retries, for requests made via the Table service.
 * defaultLocationMode                                 The default location mode for requests made via the Table service.
 * defaultPayloadFormat                                The default payload format for requests made via the Table service.
-* useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Table service.; true to use the  
+* useNagleAlgorithm                                   Determines whether the Nagle algorithm is used for requests made via the Table service.; true to use the
 *                                                     Nagle algorithm; otherwise, false. The default value is false.
 * enableGlobalHttpAgent                               Determines whether global HTTP(s) agent is enabled; true to use Global HTTP(s) agent; otherwise, false to use
 *                                                     http(s).Agent({keepAlive:true}).
@@ -12312,7 +12312,7 @@ var TableUtilities = require('./tableutilities');
 *
 * @param {string} [storageAccountOrConnectionString]  The storage account or the connection string.
 * @param {string} [storageAccessKey]                  The storage access key.
-* @param {string|object} [host]                       The host address. To define primary only, pass a string. 
+* @param {string|object} [host]                       The host address. To define primary only, pass a string.
 *                                                     Otherwise 'host.primaryHost' defines the primary host and 'host.secondaryHost' defines the secondary host.
 * @param {string} [sasToken]                          The Shared Access Signature token.
 * @param {string} [endpointSuffix]                    The endpoint suffix.
@@ -12347,7 +12347,7 @@ util.inherits(TableService, StorageServiceClient);
 *
 * @this {TableService}
 * @param {object}         [options]                                       The request options.
-* @param {LocationMode}   [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}   [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
 *                                                                         Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}            [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
 * @param {int}            [options.clientRequestTimeoutInMs]              The timeout of client requests, in milliseconds, to use for the request.
@@ -12357,7 +12357,7 @@ util.inherits(TableService, StorageServiceClient);
 * @param {string}         [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
 * @param {bool}           [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                         The default value is false.
-* @param {errorOrResult}  callback                                        `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                        `error` will contain information if an error occurs;
 *                                                                         otherwise `[result]{@link ServiceStats}` will contain the stats.
 *                                                                         `response` will contain information related to this operation.
 */
@@ -12399,7 +12399,7 @@ TableService.prototype.getServiceStats = function (optionsOrCallback, callback) 
 *
 * @this {TableService}
 * @param {object}             [options]                                    The request options.
-* @param {LocationMode}       [options.locationMode]                       Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                       Specifies the location mode used to decide which location the request should be sent to.
 *                                                                          Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]                The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]           The timeout of client requests, in milliseconds, to use for the request.
@@ -12409,7 +12409,7 @@ TableService.prototype.getServiceStats = function (optionsOrCallback, callback) 
 * @param {string}             [options.clientRequestId]                    A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                  Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                          The default value is false.
-* @param {errorOrResult}  callback                                         `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                         `error` will contain information if an error occurs;
 *                                                                          otherwise `[result]{@link ServiceProperties}` will contain the properties.
 *                                                                         `response` will contain information related to this operation.
 */
@@ -12424,7 +12424,7 @@ TableService.prototype.getServiceProperties = function (optionsOrCallback, callb
 * @this {TableService}
 * @param {object}             serviceProperties                            The service properties.
 * @param {object}             [options]                                    The request options.
-* @param {LocationMode}       [options.locationMode]                       Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                       Specifies the location mode used to decide which location the request should be sent to.
 *                                                                          Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]                The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]           The timeout of client requests, in milliseconds, to use for the request.
@@ -12434,7 +12434,7 @@ TableService.prototype.getServiceProperties = function (optionsOrCallback, callb
 * @param {string}             [options.clientRequestId]                    A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                  Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                          The default value is false.
-* @param {errorOrResponse}  callback                                       `error` will contain information if an error occurs; 
+* @param {errorOrResponse}  callback                                       `error` will contain information if an error occurs;
 *                                                                          `response` will contain information related to this operation.
 */
 TableService.prototype.setServiceProperties = function (serviceProperties, optionsOrCallback, callback) {
@@ -12447,8 +12447,8 @@ TableService.prototype.setServiceProperties = function (serviceProperties, optio
 * @this {TableService}
 * @param {object}             currentToken                                      A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
 * @param {object}             [options]                                         The create options or callback function.
-* @param {int}                [options.maxResults]                              Specifies the maximum number of tables to return per call to Azure ServiceClient. 
-* @param {LocationMode}       [options.locationMode]                            Specifies the location mode used to decide which location the request should be sent to. 
+* @param {int}                [options.maxResults]                              Specifies the maximum number of tables to return per call to Azure ServiceClient.
+* @param {LocationMode}       [options.locationMode]                            Specifies the location mode used to decide which location the request should be sent to.
 *                                                                               Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]                     The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]                The timeout of client requests, in milliseconds, to use for the request.
@@ -12459,8 +12459,8 @@ TableService.prototype.setServiceProperties = function (serviceProperties, optio
 * @param {string}             [options.clientRequestId]                         A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                               The default value is false.
-* @param {errorOrResult}  callback                                              `error` will contain information if an error occurs; 
-*                                                                               otherwise `result` will contain `entries` and `continuationToken`. 
+* @param {errorOrResult}  callback                                              `error` will contain information if an error occurs;
+*                                                                               otherwise `result` will contain `entries` and `continuationToken`.
 *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
 *                                                                               `response` will contain information related to this operation.
 */
@@ -12475,8 +12475,8 @@ TableService.prototype.listTablesSegmented = function (currentToken, optionsOrCa
 * @param {string}             prefix                                            The prefix of the table name.
 * @param {object}             currentToken                                      A continuation token returned by a previous listing operation. Please use 'null' or 'undefined' if this is the first operation.
 * @param {object}             [options]                                         The create options or callback function.
-* @param {int}                [options.maxResults]                              Specifies the maximum number of tables to return per call to Azure ServiceClient. 
-* @param {LocationMode}       [options.locationMode]                            Specifies the location mode used to decide which location the request should be sent to. 
+* @param {int}                [options.maxResults]                              Specifies the maximum number of tables to return per call to Azure ServiceClient.
+* @param {LocationMode}       [options.locationMode]                            Specifies the location mode used to decide which location the request should be sent to.
 *                                                                               Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]                     The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]                The timeout of client requests, in milliseconds, to use for the request.
@@ -12487,8 +12487,8 @@ TableService.prototype.listTablesSegmented = function (currentToken, optionsOrCa
 * @param {string}             [options.clientRequestId]                         A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                       Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                               The default value is false.
-* @param {errorOrResult}  callback                                              `error` will contain information if an error occurs; 
-*                                                                               otherwise `result` will contain `entries` and `continuationToken`. 
+* @param {errorOrResult}  callback                                              `error` will contain information if an error occurs;
+*                                                                               otherwise `result` will contain `entries` and `continuationToken`.
 *                                                                               `entries`  gives a list of tables and the `continuationToken` is used for the next listing operation.
 *                                                                               `response` will contain information related to this operation.
 */
@@ -12514,7 +12514,7 @@ TableService.prototype.listTablesSegmentedWithPrefix = function (prefix, current
     var query = new TableQuery()
       .where(TableConstants.TABLE_NAME + ' >= ?', prefix)
       .and(TableConstants.TABLE_NAME + ' < ?', prefix + '{');
-    
+
     webResource.withQueryOption(QueryStringConstants.FILTER, query.toQueryObject().$filter);
   }
 
@@ -12565,7 +12565,7 @@ TableService.prototype.listTablesSegmentedWithPrefix = function (prefix, current
 * @this {TableService}
 * @param {string}             table                                        The table name.
 * @param {object}             [options]                                    The request options.
-* @param {LocationMode}       [options.locationMode]                       Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                       Specifies the location mode used to decide which location the request should be sent to.
 *                                                                          Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]                The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]           The timeout of client requests, in milliseconds, to use for the request.
@@ -12575,7 +12575,7 @@ TableService.prototype.listTablesSegmentedWithPrefix = function (prefix, current
 * @param {string}             [options.clientRequestId]                    A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                  Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                          The default value is false.
-* @param {errorOrResult}  callback                                         `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                         `error` will contain information if an error occurs;
 *                                                                          otherwise `result` will contain the ACL information for the table. See `[AccessPolicy]{@link AccessPolicy}` for detailed information.
 *                                                                          `response` will contain information related to this operation.
 */
@@ -12619,7 +12619,7 @@ TableService.prototype.getTableAcl = function (table, optionsOrCallback, callbac
 * @param {string}                                 table                                        The table name.
 * @param {Object.<string, AccessPolicy>}             signedIdentifiers                            The table ACL settings. See `[AccessPolicy]{@link AccessPolicy}` for detailed information.
 * @param {object}                                 [options]                                    The request options.
-* @param {LocationMode}                           [options.locationMode]                       Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}                           [options.locationMode]                       Specifies the location mode used to decide which location the request should be sent to.
 *                                                                                              Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                                    [options.timeoutIntervalInMs]                The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                                    [options.clientRequestTimeoutInMs]           The timeout of client requests, in milliseconds, to use for the request.
@@ -12629,7 +12629,7 @@ TableService.prototype.getTableAcl = function (table, optionsOrCallback, callbac
 * @param {string}                                 [options.clientRequestId]                    A string that represents the client request ID with a 1KB character limit.
 * @param {bool}                                   [options.useNagleAlgorithm]                  Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                                              The default value is false.
-* @param {errorOrResult}                          callback                                     `error` will contain information if an error occurs; 
+* @param {errorOrResult}                          callback                                     `error` will contain information if an error occurs;
 *                                                                                              otherwise `result` will contain information for the table.
 *                                                                                              `response` will contain information related to this operation.
 */
@@ -12690,7 +12690,7 @@ TableService.prototype.setTableAcl = function (table, signedIdentifiers, options
 * @param {date|string}              [sharedAccessPolicy.AccessPolicy.Start]             The time at which the Shared Access Signature becomes valid (The UTC value will be used).
 * @param {date|string}              [sharedAccessPolicy.AccessPolicy.Expiry]            The time at which the Shared Access Signature becomes expired (The UTC value will be used).
 * @param {string}                   [sharedAccessPolicy.AccessPolicy.IPAddressOrRange]  An IP address or a range of IP addresses from which to accept requests. When specifying a range, note that the range is inclusive.
-* @param {string}                   [sharedAccessPolicy.AccessPolicy.Protocols]         The protocols permitted for a request made with the account SAS. 
+* @param {string}                   [sharedAccessPolicy.AccessPolicy.Protocols]         The protocols permitted for a request made with the account SAS.
 *                                                                                       Possible values are both HTTPS and HTTP (https,http) or HTTPS only (https). The default value is https,http.
 * @param {string}                   [sharedAccessPolicy.AccessPolicy.StartPk]           The starting Partition Key for which the SAS will be valid.
 * @param {string}                   [sharedAccessPolicy.AccessPolicy.EndPk]             The ending Partition Key for which the SAS will be valid.
@@ -12709,7 +12709,7 @@ TableService.prototype.generateSharedAccessSignature = function (table, sharedAc
     v.tableNameIsValid(table);
     v.object(sharedAccessPolicy, 'sharedAccessPolicy');
   });
-  
+
   var lowerCasedTableName = table.toLowerCase();
   return this.storageCredentials.generateSignedQueryString(Constants.ServiceType.Table, lowerCasedTableName, sharedAccessPolicy, null, { tableName: lowerCasedTableName });
 };
@@ -12720,7 +12720,7 @@ TableService.prototype.generateSharedAccessSignature = function (table, sharedAc
 * @this {TableService}
 * @param {string}             table                                   The table name.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -12730,8 +12730,8 @@ TableService.prototype.generateSharedAccessSignature = function (table, sharedAc
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs; 
-*                                                                     otherwise `result` will contain the table information including `exists` boolean member. 
+* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
+*                                                                     otherwise `result` will contain the table information including `exists` boolean member.
 *                                                                     `response` will contain information related to this operation.
 */
 TableService.prototype.doesTableExist = function (table, optionsOrCallback, callback) {
@@ -12744,7 +12744,7 @@ TableService.prototype.doesTableExist = function (table, optionsOrCallback, call
 * @this {TableService}
 * @param {string}             table                                   The table name.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -12754,7 +12754,7 @@ TableService.prototype.doesTableExist = function (table, optionsOrCallback, call
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
 *                                                                     otherwise `result` will contain the new table information.
 *                                                                     `response` will contain information related to this operation.
 */
@@ -12801,7 +12801,7 @@ TableService.prototype.createTable = function (table, optionsOrCallback, callbac
 * @this {TableService}
 * @param {string}             table                                   The table name.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -12811,7 +12811,7 @@ TableService.prototype.createTable = function (table, optionsOrCallback, callbac
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
 *                                                                     `result` will contain the table information including `created` boolean member
 *                                                                     `response` will contain information related to this operation.
 *
@@ -12819,7 +12819,7 @@ TableService.prototype.createTable = function (table, optionsOrCallback, callbac
 * var azure = require('azure-storage');
 * var tableService = azure.createTableService();
 * tableService.createTableIfNotExists('tasktable', function(error) {
-*   if(!error) { 
+*   if(!error) {
 *     // Table created or exists
 *   }
 * });
@@ -12841,7 +12841,7 @@ TableService.prototype.createTableIfNotExists = function (table, optionsOrCallba
     var exists = result.exists;
     result.created = false;
     delete result.exists;
-    
+
     if (error) {
       callback(error, result, response);
     } else if (exists) {
@@ -12869,7 +12869,7 @@ TableService.prototype.createTableIfNotExists = function (table, optionsOrCallba
 * @this {TableService}
 * @param {string}             table                                   The table name.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -12914,7 +12914,7 @@ TableService.prototype.deleteTable = function (table, optionsOrCallback, callbac
 * @this {TableService}
 * @param {string}             table                                   The table name.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -12924,7 +12924,7 @@ TableService.prototype.deleteTable = function (table, optionsOrCallback, callbac
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
 *                                                                     `result` will be `true` if table was deleted, false otherwise
 *                                                                     `response` will contain information related to this operation.
 */
@@ -12972,10 +12972,10 @@ TableService.prototype.deleteTableIfExists = function (table, optionsOrCallback,
 * @this {TableService}
 * @param {string}             table                                                The table name.
 * @param {TableQuery}         tableQuery                                           The query to perform. Use null, undefined, or new TableQuery() to get all of the entities in the table.
-* @param {object}             currentToken                                         A continuation token returned by a previous listing operation. 
+* @param {object}             currentToken                                         A continuation token returned by a previous listing operation.
 *                                                                                  Please use 'null' or 'undefined' if this is the first operation.
 * @param {object}             [options]                                            The request options.
-* @param {LocationMode}       [options.locationMode]                               Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                               Specifies the location mode used to decide which location the request should be sent to.
 *                                                                                  Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]                        The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]                   The timeout of client requests, in milliseconds, to use for the request.
@@ -12987,12 +12987,12 @@ TableService.prototype.deleteTableIfExists = function (table, optionsOrCallback,
 * @param {string}             [options.clientRequestId]                            A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                          Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                                  The default value is false.
-* @param {Function(entity)} [options.entityResolver]                               The entity resolver. Given a single entity returned by the query, returns a modified object which is added to 
+* @param {Function(entity)} [options.entityResolver]                               The entity resolver. Given a single entity returned by the query, returns a modified object which is added to
 *                                                                                  the entities array.
 * @param {TableService~propertyResolver}  [options.propertyResolver]               The property resolver. Given the partition key, row key, property name, property value,
 *                                                                                  and the property Edm type if given by the service, returns the Edm type of the property.
-* @param {TableService~queryResponse} callback                                     `error` will contain information if an error occurs; 
-*                                                                                  otherwise `entries` will contain the entities returned by the query. 
+* @param {TableService~queryResponse} callback                                     `error` will contain information if an error occurs;
+*                                                                                  otherwise `entries` will contain the entities returned by the query.
 *                                                                                  If more matching entities exist, and could not be returned,
 *                                                                                  `queryResultContinuation` will contain a continuation token that can be used
 *                                                                                  to retrieve the next set of results.
@@ -13017,11 +13017,11 @@ TableService.prototype.deleteTableIfExists = function (table, optionsOrCallback,
 * if (propertyType) {
 *   // Set the property type on the property.
 * } else {
-*   // Property gets no EdmType. 
+*   // Property gets no EdmType.
 * }
 * ```
 * Notes:
-* 
+*
 * * The service only provides a type if JsonFullMetadata or JsonMinimalMetadata is used, and if the type is Int64, Guid, Binary, or DateTime.
 * * Explanation of autoResolveProperties:
 *     * String gets correctly resolved to 'Edm.String'.
@@ -13034,19 +13034,19 @@ TableService.prototype.deleteTableIfExists = function (table, optionsOrCallback,
 * var azure = require('azure-storage');
 * var tableService = azure.createTableService();
 * // tasktable should already exist and have entities
-* 
+*
 * // returns all entities in tasktable, and a continuation token for the next page of results if necessary
 * tableService.queryEntities('tasktable', null, null \/*currentToken*\/, function(error, result) {
-*   if(!error) { 
+*   if(!error) {
 *     var entities = result.entries;
 *     // do stuff with the returned entities if there are any
 *   }
 * });
-* 
+*
 * // returns field1 and field2 of the entities in tasktable, and a continuation token for the next page of results if necessary
 * var tableQuery = new TableQuery().select('field1', 'field2');
 * tableService.queryEntities('tasktable', tableQuery, null \/*currentToken*\/, function(error, result) {
-*   if(!error) { 
+*   if(!error) {
 *     var entities = result.entries;
 *     // do stuff with the returned entities if there are any
 *   }
@@ -13122,7 +13122,7 @@ TableService.prototype.queryEntities = function (table, tableQuery, currentToken
 * @param {string}             partitionKey                                    The partition key.
 * @param {string}             rowKey                                          The row key.
 * @param {object}             [options]                                       The request options.
-* @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
 *                                                                             Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]              The timeout of client requests, in milliseconds, to use for the request.
@@ -13137,7 +13137,7 @@ TableService.prototype.queryEntities = function (table, tableQuery, currentToken
 * @param {TableService~propertyResolver}  [options.propertyResolver]          The property resolver. Given the partition key, row key, property name, property value,
 *                                                                             and the property Edm type if given by the service, returns the Edm type of the property.
 * @param {Function(entity)} [options.entityResolver]                          The entity resolver. Given the single entity returned by the query, returns a modified object.
-* @param {errorOrResult}  callback                                            `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                            `error` will contain information if an error occurs;
 *                                                                             otherwise `result` will be the matching entity.
 *                                                                             `response` will contain information related to this operation.
 *
@@ -13160,11 +13160,11 @@ TableService.prototype.queryEntities = function (table, tableQuery, currentToken
 * if (propertyType) {
 *   // Set the property type on the property.
 * } else {
-*   // Property gets no EdmType. 
+*   // Property gets no EdmType.
 * }
 * ```
 * Notes:
-* 
+*
 * * The service only provides a type if JsonFullMetadata or JsonMinimalMetadata is used, and if the type is Int64, Guid, Binary, or DateTime.
 * * Explanation of autoResolveProperties:
 *     * String gets correctly resolved to 'Edm.String'.
@@ -13204,7 +13204,7 @@ TableService.prototype.retrieveEntity = function (table, partitionKey, rowKey, o
 * @param {object}             [options]                                       The request options.
 * @param {string}             [options.echoContent]                           Whether or not to return the entity upon a successful insert. Default to false.
 * @param {string}             [options.payloadFormat]                         The payload format to use in the response, if options.echoContent is true.
-* @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
 *                                                                             Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]              The timeout of client requests, in milliseconds, to use for the request.
@@ -13214,11 +13214,11 @@ TableService.prototype.retrieveEntity = function (table, partitionKey, rowKey, o
 * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                             The default value is false.
-* @param {TableService~propertyResolver}  [options.propertyResolver]          The property resolver. Only applied if echoContent is true. Given the partition key, row key, property name, 
+* @param {TableService~propertyResolver}  [options.propertyResolver]          The property resolver. Only applied if echoContent is true. Given the partition key, row key, property name,
 *                                                                             property value, and the property Edm type if given by the service, returns the Edm type of the property.
-* @param {Function(entity)} [options.entityResolver]                          The entity resolver. Only applied if echoContent is true. Given the single entity returned by the insert, returns 
+* @param {Function(entity)} [options.entityResolver]                          The entity resolver. Only applied if echoContent is true. Given the single entity returned by the insert, returns
 *                                                                             a modified object.
-* @param {errorOrResult}  callback                                            `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                            `error` will contain information if an error occurs;
 *                                                                             otherwise `result` will contain the entity information.
 *                                                                             `response` will contain information related to this operation.
 *
@@ -13235,7 +13235,7 @@ TableService.prototype.retrieveEntity = function (table, partitionKey, rowKey, o
 *   if(!error) {
 *     // Entity inserted
 *   }
-* }); 
+* });
 */
 TableService.prototype.insertEntity = function (table, entityDescriptor, optionsOrCallback, callback) {
   this._performEntityOperation(TableConstants.Operations.INSERT, table, entityDescriptor, optionsOrCallback, callback);
@@ -13248,7 +13248,7 @@ TableService.prototype.insertEntity = function (table, entityDescriptor, options
 * @param {string}             table                                   The table name.
 * @param {object}             entityDescriptor                        The entity descriptor.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -13258,7 +13258,7 @@ TableService.prototype.insertEntity = function (table, entityDescriptor, options
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
 *                                                                     otherwise `result` will contain the entity information.
 *                                                                     `response` will contain information related to this operation.
 */
@@ -13273,7 +13273,7 @@ TableService.prototype.insertOrReplaceEntity = function (table, entityDescriptor
 * @param {string}             table                                   The table name.
 * @param {object}             entityDescriptor                        The entity descriptor.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -13283,7 +13283,7 @@ TableService.prototype.insertOrReplaceEntity = function (table, entityDescriptor
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
 *                                                                     otherwise `result` will contain the entity information.
 *                                                                     `response` will contain information related to this operation.
 */
@@ -13296,9 +13296,9 @@ TableService.prototype.replaceEntity = function (table, entityDescriptor, option
 *
 * @this {TableService}
 * @param {string}             table                                   The table name.
-* @param {object}             entityDescriptor                        The entity descriptor. 
+* @param {object}             entityDescriptor                        The entity descriptor.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -13308,7 +13308,7 @@ TableService.prototype.replaceEntity = function (table, entityDescriptor, option
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
 *                                                                     otherwise `result` will contain the entity information.
 *                                                                     response` will contain information related to this operation.
 */
@@ -13323,7 +13323,7 @@ TableService.prototype.mergeEntity = function (table, entityDescriptor, optionsO
 * @param {string}             table                                   The table name.
 * @param {object}             entityDescriptor                        The entity descriptor.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -13333,7 +13333,7 @@ TableService.prototype.mergeEntity = function (table, entityDescriptor, optionsO
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                    `error` will contain information if an error occurs;
 *                                                                     otherwise `result` will contain the entity information.
 *                                                                     `response` will contain information related to this operation.
 */
@@ -13348,7 +13348,7 @@ TableService.prototype.insertOrMergeEntity = function (table, entityDescriptor, 
 * @param {string}             table                                   The table name.
 * @param {object}             entityDescriptor                        The entity descriptor.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -13358,7 +13358,7 @@ TableService.prototype.insertOrMergeEntity = function (table, entityDescriptor, 
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs; 
+* @param {errorOrResponse}  callback                                  `error` will contain information if an error occurs;
 *                                                                     `response` will contain information related to this operation.
 */
 TableService.prototype.deleteEntity = function (table, entityDescriptor, optionsOrCallback, callback) {
@@ -13372,7 +13372,7 @@ TableService.prototype.deleteEntity = function (table, entityDescriptor, options
 * @param {string}             table                                           The table name.
 * @param {TableBatch}         batch                                           The table batch to execute.
 * @param {object}             [options]                                       The create options or callback function.
-* @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                          Specifies the location mode used to decide which location the request should be sent to.
 *                                                                             Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]                   The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]              The timeout of client requests, in milliseconds, to use for the request.
@@ -13382,7 +13382,7 @@ TableService.prototype.deleteEntity = function (table, entityDescriptor, options
 * @param {string}             [options.clientRequestId]                       A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]                     Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                             The default value is false.
-* @param {errorOrResult}  callback                                            `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                            `error` will contain information if an error occurs;
 *                                                                             otherwise `result` will contain responses for each operation executed in the batch;
 *                                                                             `result.entity` will contain the entity information for each operation executed.
 *                                                                             `result.response` will contain the response for each operations executed.
@@ -13425,7 +13425,7 @@ TableService.prototype.executeBatch = function (table, batch, optionsOrCallback,
         }
       });
     }
-    
+
     if (noError) {
       responseObject.operationResponses = responseObjects;
     }
@@ -13451,7 +13451,7 @@ TableService.prototype.executeBatch = function (table, batch, optionsOrCallback,
 * @param {string}             table                                   The table name.
 * @param {string}             primaryOnly                             If true, the request will be executed against the primary storage location.
 * @param {object}             [options]                               The request options.
-* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]                  Specifies the location mode used to decide which location the request should be sent to.
 *                                                                     Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]           The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]      The timeout of client requests, in milliseconds, to use for the request.
@@ -13461,9 +13461,9 @@ TableService.prototype.executeBatch = function (table, batch, optionsOrCallback,
 * @param {string}             [options.clientRequestId]               A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]             Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                     The default value is false.
-* @param {Function(error, result, response)}  callback                `error` will contain information if an error occurs; 
+* @param {Function(error, result, response)}  callback                `error` will contain information if an error occurs;
 *                                                                     otherwise `result` will contain
-*                                                                     the table information including `exists` boolean member. 
+*                                                                     the table information including `exists` boolean member.
 *                                                                     `response` will contain information related to this operation.
 */
 TableService.prototype._doesTableExist = function (table, primaryOnly, optionsOrCallback, callback) {
@@ -13477,7 +13477,7 @@ TableService.prototype._doesTableExist = function (table, primaryOnly, optionsOr
   });
 
   var options = extend(true, {}, userOptions);
-  
+
   if(primaryOnly === false) {
     options.requestLocationMode = RequestLocationMode.PRIMARY_OR_SECONDARY;
   }
@@ -13490,7 +13490,7 @@ TableService.prototype._doesTableExist = function (table, primaryOnly, optionsOr
     responseObject.tableResult.isSuccessful = responseObject.error ? false : true;
     responseObject.tableResult.statusCode = responseObject.response === null || responseObject.response === undefined ? undefined : responseObject.response.statusCode;
     responseObject.tableResult.TableName = table;
-    
+
     if(!responseObject.error){
       responseObject.tableResult.exists = true;
     } else if (responseObject.error && responseObject.error.statusCode === Constants.HttpConstants.HttpResponseCodes.NotFound) {
@@ -13519,7 +13519,7 @@ TableService.prototype._doesTableExist = function (table, primaryOnly, optionsOr
 * @param {object}             [options]                           The create options or callback function.
 * @param {string}             [options.echoContent]               Whether or not to return the entity upon a successful insert. Default to false.
 * @param {string}             [options.payloadFormat]             The payload format to use for the request.
-* @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to. 
+* @param {LocationMode}       [options.locationMode]              Specifies the location mode used to decide which location the request should be sent to.
 *                                                                 Please see StorageUtilities.LocationMode for the possible values.
 * @param {int}                [options.timeoutIntervalInMs]       The server timeout interval, in milliseconds, to use for the request.
 * @param {int}                [options.clientRequestTimeoutInMs]  The timeout of client requests, in milliseconds, to use for the request.
@@ -13529,7 +13529,7 @@ TableService.prototype._doesTableExist = function (table, primaryOnly, optionsOr
 * @param {string}             [options.clientRequestId]           A string that represents the client request ID with a 1KB character limit.
 * @param {bool}               [options.useNagleAlgorithm]         Determines whether the Nagle algorithm is used; true to use the Nagle algorithm; otherwise, false.
 *                                                                 The default value is false.
-* @param {errorOrResult}  callback                                `error` will contain information if an error occurs; 
+* @param {errorOrResult}  callback                                `error` will contain information if an error occurs;
 *                                                                 otherwise `entity` will contain the entity information.
 *                                                                 `response` will contain information related to this operation.
 * @ignore
@@ -13547,7 +13547,7 @@ TableService.prototype._performEntityOperation = function (operation, table, ent
       v.object(entityDescriptor.PartitionKey, 'entityDescriptor.PartitionKey');
       v.stringAllowEmpty(entityDescriptor.PartitionKey._, 'entityDescriptor.PartitionKey._');
     }
-    
+
     if(typeof entityDescriptor.RowKey !== 'string') {
       v.object(entityDescriptor.RowKey, 'entityDescriptor.RowKey');
       v.stringAllowEmpty(entityDescriptor.RowKey._, 'entityDescriptor.RowKey._');
@@ -13600,7 +13600,7 @@ TableService.prototype._performEntityOperation = function (operation, table, ent
 *     Expiry: expiryDate
 *   },
 * };
-* 
+*
 * var sasToken = tableService.generateSharedAccessSignature(table, sharedAccessPolicy);
 * var sasUrl = tableService.getUrl(table, sasToken);
 */
@@ -13624,9 +13624,9 @@ TableService.prototype.getUrl = function (table, sasToken, primary) {
 * @param {string} type  The EDM type.
 */
 
-/** 
+/**
 * Returns entities matched by a query.
-* @callback TableService~queryResponse                                                                                
+* @callback TableService~queryResponse
 * @param {object} error                     If an error occurs, the error information.
 * @param {object} entries                  The entities returned by the query.
 * @param {object} queryResultContinuation   If more matching entities exist, and could not be returned,
@@ -13638,21 +13638,21 @@ module.exports = TableService;
 
 }).call(this,require("buffer").Buffer)
 },{"./../../common/common.core":3,"./internal/requesthandler":43,"./internal/sharedkeytable":44,"./models/batchresult":45,"./models/entityresult":46,"./models/tableresult":47,"./tablequery":49,"./tableutilities":51,"buffer":99,"extend":137,"underscore":228,"util":233}],51:[function(require,module,exports){
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Expose 'HeaderConstants'.
 exports = module.exports;
@@ -13755,7 +13755,7 @@ var TableUtilities = {
 
       return {
       EntityProperty : EntityProperty,
-      
+
       Int32 : function(value) {
         return new EntityProperty(value, 'Edm.Int32');
       },
@@ -31079,8 +31079,8 @@ var onToken = function (token, value) {
   token === JsonParser.C.FALSE ||
   token === JsonParser.C.NULL) {
     // Parser will emit value in these cases
-    if (typeof value === 'number' && 
-    this.internalParser.string.indexOf('.') != -1 && 
+    if (typeof value === 'number' &&
+    this.internalParser.string.indexOf('.') != -1 &&
     parseInt(this.internalParser.string) === value &&
     this.internalParser.mode !== JsonParser.C.ARRAY) {
       var typeKey = this.internalParser.key + '@odata.type';
@@ -31088,7 +31088,7 @@ var onToken = function (token, value) {
         this.internalParser.value[typeKey] = 'Edm.Double';
       }
       additionalEmit(typeKey, 'Edm.Double');
-      
+
       // Determine whether return raw string to avoid losing precision
       emitString = this.internalParser.string !== value.toString();
     }
@@ -31247,16 +31247,16 @@ proto.write = function (buffer) {
     }else if (this.tState === STRING2){ // After backslash
       n = buffer[i];
       if(n === 0x22){ this.string += "\""; this.tState = STRING1;
-      }else if(n === 0x5c){ this.string += "\\"; this.tState = STRING1; 
-      }else if(n === 0x2f){ this.string += "\/"; this.tState = STRING1; 
-      }else if(n === 0x62){ this.string += "\b"; this.tState = STRING1; 
-      }else if(n === 0x66){ this.string += "\f"; this.tState = STRING1; 
-      }else if(n === 0x6e){ this.string += "\n"; this.tState = STRING1; 
-      }else if(n === 0x72){ this.string += "\r"; this.tState = STRING1; 
-      }else if(n === 0x74){ this.string += "\t"; this.tState = STRING1; 
+      }else if(n === 0x5c){ this.string += "\\"; this.tState = STRING1;
+      }else if(n === 0x2f){ this.string += "\/"; this.tState = STRING1;
+      }else if(n === 0x62){ this.string += "\b"; this.tState = STRING1;
+      }else if(n === 0x66){ this.string += "\f"; this.tState = STRING1;
+      }else if(n === 0x6e){ this.string += "\n"; this.tState = STRING1;
+      }else if(n === 0x72){ this.string += "\r"; this.tState = STRING1;
+      }else if(n === 0x74){ this.string += "\t"; this.tState = STRING1;
       }else if(n === 0x75){ this.unicode = ""; this.tState = STRING3;
-      }else{ 
-        return this.charError(buffer, i); 
+      }else{
+        return this.charError(buffer, i);
       }
     }else if (this.tState === STRING3 || this.tState === STRING4 || this.tState === STRING5 || this.tState === STRING6){ // unicode hex codes
       n = buffer[i];
@@ -31266,7 +31266,7 @@ proto.write = function (buffer) {
         if (this.tState++ === STRING6) {
           this.string += String.fromCharCode(parseInt(this.unicode, 16));
           this.unicode = undefined;
-          this.tState = STRING1; 
+          this.tState = STRING1;
         }
       } else {
         return this.charError(buffer, i);
@@ -31372,14 +31372,14 @@ proto.emit = function (value) {
 };
 proto.onValue = function (value) {
   // Override me
-};  
+};
 proto.onToken = function (token, value) {
   if(this.state === VALUE){
     if(token === STRING || token === NUMBER || token === TRUE || token === FALSE || token === NULL){
       if (this.value) {
         this.value[this.key] = value;
       }
-      this.emit(value);  
+      this.emit(value);
     }else if(token === LEFT_BRACE){
       this.push();
       if (this.value) {
@@ -31428,7 +31428,7 @@ proto.onToken = function (token, value) {
     if (token === COLON) { this.state = VALUE; }
     else { return this.parseError(token, value); }
   }else if(this.state === COMMA){
-    if (token === COMMA) { 
+    if (token === COMMA) {
       if (this.mode === ARRAY) { this.key++; this.state = VALUE; }
       else if (this.mode === OBJECT) { this.state = KEY; }
 
@@ -38599,7 +38599,7 @@ var IncomingMessage = exports.IncomingMessage = function (xhr, response, mode, f
 		self.url = response.url
 		self.statusCode = response.status
 		self.statusMessage = response.statusText
-		
+
 		response.headers.forEach(function (header, key){
 			self.headers[key.toLowerCase()] = header
 			self.rawHeaders.push(key, header)
@@ -38729,7 +38729,7 @@ IncomingMessage.prototype._onXHRProgress = function () {
 				self.push(new Buffer(response))
 				break
 			}
-			// Falls through in IE8	
+			// Falls through in IE8
 		case 'text':
 			try { // This will fail when readyState = 3 in IE9. Switch mode and wait for readyState = 4
 				response = xhr.responseText
@@ -44438,7 +44438,7 @@ function bytesToUuid(buf, offset) {
   var i = offset || 0;
   var bth = byteToHex;
   // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
-  return ([bth[buf[i++]], bth[buf[i++]], 
+  return ([bth[buf[i++]], bth[buf[i++]],
 	bth[buf[i++]], bth[buf[i++]], '-',
 	bth[buf[i++]], bth[buf[i++]], '-',
 	bth[buf[i++]], bth[buf[i++]], '-',
@@ -47534,13 +47534,13 @@ Script.prototype.runInContext = function (context) {
     if (!(context instanceof Context)) {
         throw new TypeError("needs a 'context' argument.");
     }
-    
+
     var iframe = document.createElement('iframe');
     if (!iframe.style) iframe.style = {};
     iframe.style.display = 'none';
-    
+
     document.body.appendChild(iframe);
-    
+
     var win = iframe.contentWindow;
     var wEval = win.eval, wExecScript = win.execScript;
 
@@ -47549,7 +47549,7 @@ Script.prototype.runInContext = function (context) {
         wExecScript.call(win, 'null');
         wEval = win.eval;
     }
-    
+
     forEach(Object_keys(context), function (key) {
         win[key] = context[key];
     });
@@ -47558,11 +47558,11 @@ Script.prototype.runInContext = function (context) {
             win[key] = context[key];
         }
     });
-    
+
     var winKeys = Object_keys(win);
 
     var res = wEval.call(win, this.code);
-    
+
     forEach(Object_keys(win), function (key) {
         // Avoid copying circular objects like `top` and `window` by only
         // updating existing context properties or new properties in the `win`
@@ -47577,9 +47577,9 @@ Script.prototype.runInContext = function (context) {
             defineProp(context, key, win[key]);
         }
     });
-    
+
     document.body.removeChild(iframe);
-    
+
     return res;
 };
 
